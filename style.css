@@ -1,0 +1,205 @@
+/* Gen-Z.js Framework Demo Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  color: #4a5568;
+  margin-bottom: 10px;
+  font-size: 2.5em;
+}
+
+.container > p {
+  text-align: center;
+  color: #718096;
+  margin-bottom: 40px;
+  font-size: 1.1em;
+}
+
+.demo-section {
+  margin-bottom: 40px;
+  padding: 25px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  border-left: 4px solid #667eea;
+}
+
+.demo-section h2 {
+  color: #4a5568;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+/* Buttons */
+button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  margin: 5px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+/* Inputs */
+input[type="text"],
+input[type="email"] {
+  padding: 12px;
+  border: 2px solid #e2e8f0;
+  border-radius: 8px;
+  font-size: 14px;
+  margin: 5px;
+  transition: border-color 0.3s ease;
+  width: 250px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+/* Boxes for demo */
+.box,
+.multi-box {
+  background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%);
+  padding: 20px;
+  margin: 10px 0;
+  border-radius: 10px;
+  text-align: center;
+  font-weight: bold;
+  color: #2d3436;
+  transition: all 0.3s ease;
+  display: inline-block;
+  min-width: 150px;
+}
+
+.multi-box {
+  margin: 10px;
+  width: 120px;
+}
+
+/* Dynamic classes */
+.highlight {
+  background: linear-gradient(135deg, #fd79a8 0%, #fdcb6e 100%) !important;
+  transform: scale(1.05);
+  box-shadow: 0 10px 25px rgba(253, 121, 168, 0.4);
+}
+
+.hover-effect {
+  background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%) !important;
+  color: white;
+  transform: scale(1.1) rotate(2deg);
+  box-shadow: 0 15px 30px rgba(108, 92, 231, 0.4);
+}
+
+.active {
+  background: linear-gradient(135deg, #00b894 0%, #00cec9 100%) !important;
+  color: white;
+  transform: scale(1.1);
+  box-shadow: 0 10px 25px rgba(0, 206, 201, 0.4);
+}
+
+/* Forms */
+form {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+    margin: 10px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  input[type="text"],
+  input[type="email"] {
+    width: 100%;
+    margin: 5px 0;
+  }
+
+  .multi-box {
+    display: block;
+    width: 100%;
+    margin: 10px 0;
+  }
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.demo-section {
+  animation: slideIn 0.6s ease-out;
+}
+
+/* Special Gen-Z styling */
+span[getz] {
+  background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+  color: white;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin: 0 10px;
+  display: inline-block;
+  min-width: 200px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+span[getz]:empty:before {
+  content: "Waiting for input...";
+  opacity: 0.7;
+}

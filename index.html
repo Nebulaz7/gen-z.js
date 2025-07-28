@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gen-Z.js Framework Demo</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 Gen-Z.js Framework Demo</h1>
+        <p>Add interactivity to HTML without writing JavaScript!</p>
+
+        <!-- Basic Alert Examples -->
+        <section class="demo-section">
+            <h2 alertz="yo-bro">🚨 Alert Functions</h2>
+            <button alertz="Hello from Gen-Z! 🎉">Simple Alert</button>
+            
+            <div>
+                <span id="myText">This text will be alerted!</span>
+                <button alertz-text="#myText">Alert Text Content</button>
+            </div>
+        </section>
+
+        <!-- Value Manipulation -->
+        <section class="demo-section">
+            <h2>📝 Value Manipulation</h2>
+            <input type="text" id="myInput" placeholder="Type something..." />
+            <span getz="#myInput">Text will appear here...</span>
+            
+            <br><br>
+            <button setz="#myInput:Hello Gen-Z!">Set Input Value</button>
+            <button clearz="#myInput">Clear Input</button>
+        </section>
+
+        <!-- Show/Hide/Toggle -->
+        <section class="demo-section">
+            <h2>👁️ Visibility Controls</h2>
+            <div id="toggleTarget" class="box">I can be toggled!</div>
+            
+            <button togglez="#toggleTarget">Toggle Visibility</button>
+            <button showz="#toggleTarget">Show</button>
+            <button hidez="#toggleTarget">Hide</button>
+            
+            <br><br>
+            <div id="classTarget" class="box">I change classes!</div>
+            <button togglez-class="#classTarget:highlight">Toggle Highlight</button>
+        </section>
+
+        <!-- Custom Actions -->
+        <section class="demo-section">
+            <h2>⚡ Custom Actions</h2>
+            <button clickz="alert(2+2)">Custom Alert</button>
+            <button clickz="console.log('Logged to console!')">Log to Console</button>
+        </section>
+
+        <!-- Form Example -->
+        <section class="demo-section">
+            <h2>📋 Form Controls</h2>
+            <form id="demoForm">
+                <input type="text" name="username" placeholder="Username" />
+                <input type="email" name="email" placeholder="Email" />
+                <br><br>
+                <button type="button" clearz="#demoForm">Clear Form</button>
+                <button type="button" submitz="#demoForm">Submit Form</button>
+            </form>
+        </section>
+
+        <!-- Hover Effects -->
+        <section class="demo-section">
+            <h2>🎨 Hover Effects</h2>
+            <div class="box" hoverz="hover-effect">Hover over me!</div>
+        </section>
+
+        <!-- Multiple Elements -->
+        <section class="demo-section">
+            <h2>🔄 Multiple Elements</h2>
+            <div class="multi-box" id="box1">Box 1</div>
+            <div class="multi-box" id="box2">Box 2</div>
+            <div class="multi-box" id="box3">Box 3</div>
+            
+            <button showz="#box1, #box2, #box3">Show All</button>
+            <button hidez="#box1">Hide Box 1</button>
+            <button togglez-class="#box1, #box2, #box3:active">Toggle All Active</button>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
