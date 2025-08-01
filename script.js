@@ -5,6 +5,7 @@
 
 class GenZ {
   constructor() {
+    this.variables = {};
     this.init();
   }
 
@@ -59,6 +60,28 @@ class GenZ {
 
   // Value manipulation
   bindValueEvents() {
+    // Variable storage: <element letz="variableName">value</element>
+    document.querySelectorAll("[letz]").forEach((el) => {
+      const varName = el.getAttribute("letz");
+      const updateVar = () => {
+        const val = el.value !== undefined ? el.value : el.textContent;
+        this.variables[varName] = val;
+        window[varName] = val; // expose as global
+      };
+
+      // initial capture
+      updateVar();
+
+      // keep it in sync
+      if (el.value !== undefined) {
+        // inputs, textareas, selects…
+        el.addEventListener("input", updateVar);
+      } else {
+        // any other element — click to re-capture its text
+        el.addEventListener("click", updateVar);
+      }
+    });
+
     // Get value from input: <span getz="#inputId">Default</span>
     document.querySelectorAll("[getz]").forEach((el) => {
       const sourceSelector = el.getAttribute("getz");
@@ -68,11 +91,13 @@ class GenZ {
         // Initial value
         if (sourceEl.value !== undefined) {
           el.textContent = sourceEl.value;
+          console.log(sourceEl.value);
         }
 
         // Update on input change
         sourceEl.addEventListener("input", () => {
           el.textContent = sourceEl.value;
+          console.log(sourceEl.value);
         });
       }
     });
@@ -193,44 +218,20 @@ class GenZ {
     });
   }
 
-  // Execute custom actions
+  // Execute custom actions (clickz, etc.)
   executeAction(action, element) {
     try {
-      // Simple action parser
-      if (action.includes("alert(")) {
-        const message = action.match(/alert\(['"](.+)['"]\)/)?.[1];
-        if (message) alert(message);
-      } else if (action.includes("console.log(")) {
-        const message = action.match(/console\.log\(['"](.+)['"]\)/)?.[1];
-        if (message) console.log(message);
-      } else {
-        // Fallback: try to execute as JavaScript (be careful with this!)
-        new Function("element", action)(element);
-      }
-    } catch (error) {
-      console.error("GenZ Action Error:", error);
-    }
-  }
-
-  // Utility method to add dynamic content
-  static addContent(selector, content) {
-    const target = document.querySelector(selector);
-    if (target) {
-      target.innerHTML += content;
-    }
-  }
-
-  // Utility method to replace content
-  static setContent(selector, content) {
-    const target = document.querySelector(selector);
-    if (target) {
-      target.innerHTML = content;
+      // turn the action string into a real function
+      const fn = new Function(action);
+      // call it in the context of the clicked element
+      fn.call(element);
+    } catch (err) {
+      console.error("Gen-Z.js action error:", err);
     }
   }
 }
 
-// Initialize Gen-Z framework
-const genZ = new GenZ();
+// ← end of class GenZ
 
-// Make it globally available
-window.GenZ = GenZ;
+// instantiate the framework
+new GenZ();
