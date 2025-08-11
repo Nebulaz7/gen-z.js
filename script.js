@@ -77,6 +77,11 @@ class GenZ {
       // Set initial state value from element
       this.state[varName] = el.value || el.textContent;
 
+      // Hide element if hidez attribute is present
+      if (el.hasAttribute("hidez")) {
+        el.style.display = "none";
+      }
+
       // Listen for input changes to update state
       el.addEventListener("input", () => {
         this.state[varName] = el.value;
