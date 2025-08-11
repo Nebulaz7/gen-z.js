@@ -5,7 +5,17 @@
 
 class GenZ {
   constructor() {
-    this.variables = {};
+    const self = this;
+    this.state = new Proxy(
+      {},
+      {
+        set(target, property, value) {
+          target[property] = value;
+          self.updateView(property);
+          return true;
+        },
+      }
+    );
     this.init();
   }
 
@@ -21,6 +31,7 @@ class GenZ {
   bindEvents() {
     // Find all elements with gen-z attributes
     this.bindClickEvents();
+    this.bindLetzEvents();
     this.bindValueEvents();
     this.bindToggleEvents();
     this.bindShowHideEvents();
@@ -58,65 +69,79 @@ class GenZ {
     });
   }
 
-  // Value manipulation
-  bindValueEvents() {
-    // Variable storage: <element letz="variableName">value</element>
+  // Two-way data binding
+  bindLetzEvents() {
     document.querySelectorAll("[letz]").forEach((el) => {
       const varName = el.getAttribute("letz");
-      const updateVar = () => {
-        const val = el.value !== undefined ? el.value : el.textContent;
-        this.variables[varName] = val;
-        window[varName] = val; // expose as global
-      };
 
-      // initial capture
-      updateVar();
+      // Set initial state value from element
+      this.state[varName] = el.value || el.textContent;
 
-      // keep it in sync
-      if (el.value !== undefined) {
-        // inputs, textareas, selects…
-        el.addEventListener("input", updateVar);
-      } else {
-        // any other element — click to re-capture its text
-        el.addEventListener("click", updateVar);
-      }
+      // Listen for input changes to update state
+      el.addEventListener("input", () => {
+        this.state[varName] = el.value;
+      });
     });
+  }
 
-    // Get value from input: <span getz="#inputId">Default</span>
+  // Value manipulation
+  bindValueEvents() {
+    // Get value from state or input
     document.querySelectorAll("[getz]").forEach((el) => {
-      const sourceSelector = el.getAttribute("getz");
-      const sourceEl = document.querySelector(sourceSelector);
-
-      if (sourceEl) {
-        // Initial value
-        if (sourceEl.value !== undefined) {
+      const source = el.getAttribute("getz");
+      if (source.startsWith("#") || source.startsWith(".")) {
+        // Legacy support for getz from element
+        const sourceEl = document.querySelector(source);
+        if (sourceEl) {
           el.textContent = sourceEl.value;
-          console.log(sourceEl.value);
+          sourceEl.addEventListener("input", () => {
+            el.textContent = sourceEl.value;
+          });
         }
-
-        // Update on input change
-        sourceEl.addEventListener("input", () => {
-          el.textContent = sourceEl.value;
-          console.log(sourceEl.value);
-        });
+      } else {
+        // Get from state
+        this.updateView(source);
       }
     });
 
-    // Set value to input: <button setz="#inputId:Hello World">Set Value</button>
+    // Set value to state or input
     document.querySelectorAll("[setz]").forEach((el) => {
       el.addEventListener("click", () => {
-        const [targetSelector, value] = el.getAttribute("setz").split(":");
-        const target = document.querySelector(targetSelector);
-        if (target) {
-          if (target.value !== undefined) {
-            target.value = value;
-          } else {
-            target.textContent = value;
+        const [target, value] = el.getAttribute("setz").split(":");
+        if (target.startsWith("#") || target.startsWith(".")) {
+          // Legacy support for setz to element
+          const targetEl = document.querySelector(target);
+          if (targetEl) {
+            if (targetEl.value !== undefined) {
+              targetEl.value = value;
+            } else {
+              targetEl.textContent = value;
+            }
           }
+        } else {
+          // Set state
+          this.state[target] = value;
         }
       });
     });
   }
+
+  updateView(property) {
+    // Update elements with getz
+    document.querySelectorAll(`[getz="${property}"]`).forEach((el) => {
+      el.textContent = this.state[property];
+    });
+
+    // Update elements with letz (two-way binding)
+    document.querySelectorAll(`[letz="${property}"]`).forEach((el) => {
+      if (el.value !== undefined) {
+        el.value = this.state[property];
+      } else {
+        el.textContent = this.state[property];
+      }
+    });
+  }
+
 
   // Toggle functionality
   bindToggleEvents() {
