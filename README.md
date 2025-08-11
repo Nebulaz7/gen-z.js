@@ -137,16 +137,38 @@ Adds/removes a class on hover.
 <div hoverz="hover-effect">Hover over me!</div>
 ```
 
-### ⚡ Custom Actions
+### ⚡ Custom Actions with `clickz`
 
-#### `clickz="action"`
+The `clickz` attribute is a powerful feature for handling custom scenarios not covered by other attributes. It's your "escape hatch" for adding unique functionality.
 
-Executes custom JavaScript actions.
+**Best Practices:**
 
-```html
-<button clickz="alert('Custom message')">Custom Alert</button>
-<button clickz="console.log('Debug info')">Log Message</button>
-```
+1.  **Keep it Simple:** `clickz` is best for short, single actions.
+    ```html
+    <!-- Good -->
+    <button clickz="alert('Profile saved!')">Save</button>
+    <button clickz="console.log('Debug info')">Log</button>
+    ```
+
+2.  **Don't Write Complex Logic in HTML:** For anything more than a single command, define a function in a `<script>` tag and call it from `clickz`. This keeps your HTML clean and your logic maintainable.
+    ```html
+    <!-- Best Practice for Complex Logic -->
+    <button clickz="validateAndSubmit()">Submit Form</button>
+
+    <script>
+      function validateAndSubmit() {
+        const user = document.getElementById('username').value;
+        if (user === '') {
+          alert('Username cannot be empty!');
+          return;
+        }
+        // ... more complex logic ...
+        document.getElementById('myForm').submit();
+      }
+    </script>
+    ```
+
+By following this pattern, you get the best of both worlds: the simplicity of Gen-Z attributes for event binding, and the power and maintainability of regular JavaScript for your custom logic.
 
 ## 🎯 Selector Syntax
 
