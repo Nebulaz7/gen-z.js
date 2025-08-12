@@ -30,16 +30,25 @@
  <p>The count is: <span getz="count"></span></p>                                                                                                                                                                                                                                 
 <input type="checkbox" letz="isChecked:Boolean" checked>                                                                                  
  <p>Is checked? <span getz="isChecked"></span></p>                                                                                        
-<div letz="user:Object">{"name": "Alex"}</div>                                                                                           
- <p>User: <span getz="user"></span></p>  
+<div letz="user:Object" hidez>{"name": "Alex"}</div> 
+<p>User: <span getz="user.name"></span></p>  
 
  <p letz="fine:Boolean" hidez>1</p>
  <p letz="num1:Number">100</p>
+
  <p letz="num2:Number">30</p>
-<button setz="numz:num1 - num2">click</button>
+ <button setz="numz:num1 - num2">click</button>
  <p getz="numz"></p>
 
-    </section>
+        <p>Sum of hidden variables: <span getz="num1 + num2"></span></p>
+    
+        <h2>Object and Array Binding</h2>
+        <div letz="person:Object" hidez>{"name": "Alice", "age": 30}</div>
+        <p>Name: <span getz="person.name"></span></p>
+        <p>Age: <span getz="person.age"></span></p>
+    
+        <div letz="items:Array" hidez>[1, 2, 3]</div>
+        <p>First item: <span getz="items[0]"></span></p>
     <script src="script.js"></script>
 </body>
 </html>

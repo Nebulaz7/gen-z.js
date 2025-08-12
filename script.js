@@ -130,8 +130,8 @@ class GenZ {
           });
         }
       } else {
-        // Get from state
-        this.updateView(source);
+        // Get from state, including nested properties
+        el.textContent = this._getNestedProperty(this.state, source);
       }
     });
 
@@ -173,19 +173,52 @@ class GenZ {
   }
 
   updateView(property) {
-    // Update elements with getz
+    const value = this.state[property];
+
+    // Update elements with getz for the main property
     document.querySelectorAll(`[getz="${property}"]`).forEach((el) => {
-      el.textContent = this.state[property];
+      el.textContent = this._formatValue(value);
+    });
+
+    // Handle nested properties for getz (e.g., getz="user.name")
+    document.querySelectorAll(`[getz^="${property}."`).forEach((el) => {
+        const nestedProp = el.getAttribute("getz");
+        el.textContent = this._getNestedProperty(this.state, nestedProp);
     });
 
     // Update elements with letz (two-way binding)
-    document.querySelectorAll(`[letz="${property}"]`).forEach((el) => {
-      if (el.value !== undefined) {
-        el.value = this.state[property];
-      } else {
-        el.textContent = this.state[property];
-      }
+    document.querySelectorAll(`[letz^="${property}"]`).forEach((el) => {
+        if (el.getAttribute('letz').split(':')[0] === property) {
+            if (el.value !== undefined) {
+                el.value = this._formatValue(value);
+            } else {
+                el.textContent = this._formatValue(value);
+            }
+        }
     });
+  }
+
+  _getNestedProperty(obj, path) {
+    if (!path) return obj;
+    const keys = path.split('.');
+    let result = obj;
+    for (const key of keys) {
+        if (result === null || result === undefined) {
+            return undefined;
+        }
+        result = result[key];
+    }
+    return this._formatValue(result);
+  }
+
+  _formatValue(value) {
+    if (value === null || value === undefined) {
+        return "";
+    }
+    if (typeof value === 'object') {
+        return JSON.stringify(value, null, 2);
+    }
+    return value;
   }
 
 

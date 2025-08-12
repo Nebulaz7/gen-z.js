@@ -92,10 +92,16 @@ You can also specify a data type for your state variable by appending it after a
 
 #### `getz="variableName"`
 
-The `getz` attribute displays the value of a state variable. It updates the `textContent` of the element with the value of the specified state variable.
+The `getz` attribute displays the value of a state variable. It updates the `textContent` of the element with the value of the specified state variable. You can also access nested properties of an object in the state by using dot notation (e.g., `user.name`).
 
 ```html
+<!-- Simple variable -->
 <p>The value of username is: <span getz="username"></span></p>
+
+<!-- Nested object property -->
+<div letz="user:Object" hidez>{"name": "Alex", "job": "Developer"}</div>
+<p>User's Name: <span getz="user.name"></span></p>
+<p>User's Job: <span getz="user.job"></span></p>
 ```
 
 #### `setz="variableName:value"`
