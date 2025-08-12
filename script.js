@@ -72,10 +72,12 @@ class GenZ {
   // Two-way data binding
   bindLetzEvents() {
     document.querySelectorAll("[letz]").forEach((el) => {
-      const varName = el.getAttribute("letz");
+      const attrValue = el.getAttribute("letz");
+      const [varName, type = "string"] = attrValue.split(":");
 
-      // Set initial state value from element
-      this.state[varName] = el.value || el.textContent;
+      const initialValue =
+        el.type === "checkbox" ? el.checked : el.value || el.textContent;
+      this.state[varName] = this._castToType(initialValue, type);
 
       // Hide element if hidez attribute is present
       if (el.hasAttribute("hidez")) {
@@ -84,9 +86,33 @@ class GenZ {
 
       // Listen for input changes to update state
       el.addEventListener("input", () => {
-        this.state[varName] = el.value;
+        const newValue = el.type === "checkbox" ? el.checked : el.value;
+        this.state[varName] = this._castToType(newValue, type);
       });
     });
+  }
+
+  _castToType(value, type) {
+    switch (type.toLowerCase()) {
+      case "number":
+        return Number(value);
+      case "boolean":
+        if (typeof value === "boolean") return value;
+        return value.toLowerCase() === "true" || value === "";
+      case "null":
+        return null;
+      case "undefined":
+        return undefined;
+      case "object":
+        try {
+          return JSON.parse(value);
+        } catch (e) {
+          console.error(`Invalid JSON for object: ${value}`);
+          return {};
+        }
+      default: // string
+        return String(value);
+    }
   }
 
   // Value manipulation
@@ -112,7 +138,10 @@ class GenZ {
     // Set value to state or input
     document.querySelectorAll("[setz]").forEach((el) => {
       el.addEventListener("click", () => {
-        const [target, value] = el.getAttribute("setz").split(":");
+        const setzAttr = el.getAttribute("setz");
+        const [target, expression] = setzAttr.split(/:(.*)/s);
+        const value = this._evaluateExpression(expression);
+
         if (target.startsWith("#") || target.startsWith(".")) {
           // Legacy support for setz to element
           const targetEl = document.querySelector(target);
@@ -129,6 +158,18 @@ class GenZ {
         }
       });
     });
+  }
+
+  _evaluateExpression(expression) {
+    try {
+      const stateKeys = Object.keys(this.state);
+      const stateValues = stateKeys.map((key) => this.state[key]);
+      const fn = new Function(...stateKeys, `return ${expression}`);
+      return fn(...stateValues);
+    } catch (err) {
+      console.error(`Gen-Z.js expression error: ${err} in "${expression}"`);
+      return undefined;
+    }
   }
 
   updateView(property) {

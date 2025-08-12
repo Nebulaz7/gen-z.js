@@ -66,6 +66,30 @@ The `letz` attribute is used for two-way data binding. It initializes a variable
 
 In this example, the `username` variable in the state is bound to the input field. When you type in the input field, the `textContent` of the `span` element is automatically updated.
 
+#### Typing Variables
+
+You can also specify a data type for your state variable by appending it after a colon. Supported types are `String`, `Number`, `Boolean`, `Object`, `Null`, and `Undefined`.
+
+-   **`letz="variableName:String"`**: The value will be stored as a string (default).
+-   **`letz="age:Number"`**: The value will be converted to a number.
+-   **`letz="isActive:Boolean"`**: The value will be treated as a boolean. For input elements, an empty value or the string "true" will be `true`. For checkboxes, it will use the `checked` property.
+-   **`letz="user:Object"`**: The value should be a valid JSON string, which will be parsed into an object.
+-   **`letz="data:Null"`**: The value will be `null`.
+-   **`letz="feature:Undefined"`**: The value will be `undefined`.
+
+**Example:**
+
+```html
+<input type="text" letz="count:Number" value="10">
+<p>The count is: <span getz="count"></span></p>
+
+<input type="checkbox" letz="isChecked:Boolean" checked>
+<p>Is checked? <span getz="isChecked"></span></p>
+
+<div letz="user:Object">{"name": "Alex"}</div>
+<p>User: <span getz="user"></span></p>
+```
+
 #### `getz="variableName"`
 
 The `getz` attribute displays the value of a state variable. It updates the `textContent` of the element with the value of the specified state variable.
@@ -80,6 +104,33 @@ The `setz` attribute sets the value of a state variable. On click, it updates th
 
 ```html
 <button setz="username:JohnDoe">Set username to JohnDoe</button>
+```
+
+#### Using Expressions in `setz`
+
+The `setz` attribute can also evaluate JavaScript expressions. This allows you to perform calculations and manipulations using your state variables. All state variables are available to use within the expression.
+
+**Example:**
+
+```html
+<p letz="num1:Number">100</p>
+<p letz="num2:Number">30</p>
+
+<!-- On click, this will calculate 100 - 30 and set the result (70) to num3 -->
+<button setz="num3:num1 - num2">Calculate</button>
+
+<p>Result: <span getz="num3"></span></p>
+```
+
+You can also use string manipulation and other JavaScript expressions:
+
+```html
+<p letz="firstName:String">John</p>
+<p letz="lastName:String">Doe</p>
+
+<button setz="fullName:firstName + ' ' + lastName">Get Full Name</button>
+
+<p>Full Name: <span getz="fullName"></span></p>
 ```
 
 #### Value Manipulation (Legacy)
