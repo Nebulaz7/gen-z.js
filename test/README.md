@@ -191,6 +191,18 @@ Toggles a CSS class on an element.
 <button togglez-class="#myDiv:highlight">Toggle Highlight</button>
 ```
 
+### 🌐 Network Requests
+
+#### `fetchz="url:variableName"`
+
+Fetches JSON data from a URL and stores it in a state variable.
+
+```html
+<button fetchz="https://jsonplaceholder.typicode.com/users/1:user">Fetch User</button>
+<p>User Name: <span getz="user.name"></span></p>
+<p>Email: <span getz="user.email"></span></p>
+```
+
 ### 📋 Form Controls
 
 #### `submitz="selector"`
@@ -398,6 +410,18 @@ Toggles a CSS class on an element.
 ```html
 <div id="myDiv">Style me!</div>
 <button togglez-class="#myDiv:highlight">Toggle Highlight</button>
+```
+
+### 🌐 Network Requests
+
+#### `fetchz="url:variableName"`
+
+Fetches JSON data from a URL and stores it in a state variable.
+
+```html
+<button fetchz="https://jsonplaceholder.typicode.com/users/1:user">Fetch User</button>
+<p>User Name: <span getz="user.name"></span></p>
+<p>Email: <span getz="user.email"></span></p>
 ```
 
 ### 📋 Form Controls

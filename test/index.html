@@ -43,14 +43,74 @@
  <p getz="something"></p>
 
         <p>Sum of hidden variables: <span getz="num1 + num2"></span></p>
-    
+      
         <h2>Object and Array Binding</h2>
         <div letz="person:Object" hidez>{"name": "Alice", "age": 30}</div>
         <p>Name: <span getz="person.name"></span></p>
         <p>Age: <span getz="person.age"></span></p>
     
-        <div letz="items:Array" hidez>[1, 2, 3]</div>
+        <div letz="items:Object" hidez>[1, 2, 3]</div>
+        
         <p>First item: <span getz="items[0]"></span></p>
+
+        <h2>Fetch Demo</h2>
+        <button fetchz="https://jsonplaceholder.typicode.com/todos/1:todo">Fetch Todo</button>
+        <p>Todo Title: <span getz="todo.title"></span></p>
+        <p>Completed: <span getz="todo.completed"></span></p>
+
+        <h2>Gemini API Demo (Advanced Fetch)</h2>
+        <input type="text" letz="prompt" placeholder="Enter your prompt for Gemini" style="width: 300px;">
+        <button clickz="callGeminiAPI()">Ask Gemini</button>
+        <h3>Response:</h3>
+        <pre><code getz="geminiResponse"></code></pre>
+
     <script src="script.js"></script>
+
+    <script>
+      async function callGeminiAPI() {
+        const apiKey = "AIzaSyB1UfoJW3zrw9AuoM5zozA4B2f4QVx6-eA"; // <-- IMPORTANT: REPLACE WITH YOUR KEY
+        const url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent";
+
+        // Get the user's prompt from the Gen-Z state
+        const userPrompt = window.genZ.state.prompt;
+
+        if (!userPrompt) {
+          alert("Please enter a prompt.");
+          return;
+        }
+
+        const requestBody = {
+          "contents": [{
+            "parts": [{
+              "text": userPrompt
+            }]
+          }]
+        };
+
+        try {
+          const response = await fetch(`${url}?key=${apiKey}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(requestBody),
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          const data = await response.json();
+          
+          // Store the response back into the Gen-Z state
+          window.genZ.state.geminiResponse = data;
+
+        } catch (error) {
+          console.error('Gemini API error:', error);
+          // Store error message in state to display it
+          window.genZ.state.geminiResponse = { error: error.message };
+        }
+      }
+    </script>
 </body>
 </html>

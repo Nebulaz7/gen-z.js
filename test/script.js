@@ -49,6 +49,42 @@ class GenZ {
       });
     });
 
+    //  The fetchz attribute is Experimental. Use of this is totally at your risk
+    // Fetch on click: <button fetchz="https://api.example.com/data:myData">Fetch</button>
+    document.querySelectorAll("[fetchz]").forEach((el) => {
+      el.addEventListener("click", async () => {
+        const fetchzAttr = el.getAttribute("fetchz");
+        const lastColonIndex = fetchzAttr.lastIndexOf(":");
+
+        if (lastColonIndex === -1) {
+          console.error(
+            "fetchz attribute needs a URL and a variable name, separated by a colon."
+          );
+          return;
+        }
+
+        const url = fetchzAttr.substring(0, lastColonIndex);
+        const varName = fetchzAttr.substring(lastColonIndex + 1);
+
+        if (!url || !varName) {
+          console.error(
+            "fetchz attribute needs a URL and a variable name, separated by a colon."
+          );
+          return;
+        }
+        try {
+          const response = await fetch(url);
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+          const data = await response.json();
+          this.state[varName] = data;
+        } catch (error) {
+          console.error("Fetch error:", error);
+        }
+      });
+    });
+
     // Custom click actions: <button clickz="console.log('clicked')">Click</button>
     document.querySelectorAll("[clickz]").forEach((el) => {
       el.addEventListener("click", () => {
@@ -182,45 +218,44 @@ class GenZ {
 
     // Handle nested properties for getz (e.g., getz="user.name")
     document.querySelectorAll(`[getz^="${property}."`).forEach((el) => {
-        const nestedProp = el.getAttribute("getz");
-        el.textContent = this._getNestedProperty(this.state, nestedProp);
+      const nestedProp = el.getAttribute("getz");
+      el.textContent = this._getNestedProperty(this.state, nestedProp);
     });
 
     // Update elements with letz (two-way binding)
     document.querySelectorAll(`[letz^="${property}"]`).forEach((el) => {
-        if (el.getAttribute('letz').split(':')[0] === property) {
-            if (el.value !== undefined) {
-                el.value = this._formatValue(value);
-            } else {
-                el.textContent = this._formatValue(value);
-            }
+      if (el.getAttribute("letz").split(":")[0] === property) {
+        if (el.value !== undefined) {
+          el.value = this._formatValue(value);
+        } else {
+          el.textContent = this._formatValue(value);
         }
+      }
     });
   }
 
   _getNestedProperty(obj, path) {
     if (!path) return obj;
-    const keys = path.split('.');
+    const keys = path.split(".");
     let result = obj;
     for (const key of keys) {
-        if (result === null || result === undefined) {
-            return undefined;
-        }
-        result = result[key];
+      if (result === null || result === undefined) {
+        return undefined;
+      }
+      result = result[key];
     }
     return this._formatValue(result);
   }
 
   _formatValue(value) {
     if (value === null || value === undefined) {
-        return "";
+      return "";
     }
-    if (typeof value === 'object') {
-        return JSON.stringify(value, null, 2);
+    if (typeof value === "object") {
+      return JSON.stringify(value, null, 2);
     }
     return value;
   }
-
 
   // Toggle functionality
   bindToggleEvents() {
