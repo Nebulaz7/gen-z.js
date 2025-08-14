@@ -60,7 +60,7 @@ Gen-Z.js includes a simple state management system that allows you to create int
 The `letz` attribute is used for two-way data binding. It initializes a variable in the state with the value of the element. If the element is an input field, it listens for input events and updates the state variable accordingly.
 
 ```html
-<input type="text" letz="username" placeholder="Enter your username">
+<input type="text" letz="username" placeholder="Enter your username" />
 <p>Hello, <span getz="username"></span>!</p>
 ```
 
@@ -70,20 +70,20 @@ In this example, the `username` variable in the state is bound to the input fiel
 
 You can also specify a data type for your state variable by appending it after a colon. Supported types are `String`, `Number`, `Boolean`, `Object`, `Null`, and `Undefined`.
 
--   **`letz="variableName:String"`**: The value will be stored as a string (default).
--   **`letz="age:Number"`**: The value will be converted to a number.
--   **`letz="isActive:Boolean"`**: The value will be treated as a boolean. For input elements, an empty value or the string "true" will be `true`. For checkboxes, it will use the `checked` property.
--   **`letz="user:Object"`**: The value should be a valid JSON string, which will be parsed into an object.
--   **`letz="data:Null"`**: The value will be `null`.
--   **`letz="feature:Undefined"`**: The value will be `undefined`.
+- **`letz="variableName:String"`**: The value will be stored as a string (default).
+- **`letz="age:Number"`**: The value will be converted to a number.
+- **`letz="isActive:Boolean"`**: The value will be treated as a boolean. For input elements, an empty value or the string "true" will be `true`. For checkboxes, it will use the `checked` property.
+- **`letz="user:Object"`**: The value should be a valid JSON string, which will be parsed into an object.
+- **`letz="data:Null"`**: The value will be `null`.
+- **`letz="feature:Undefined"`**: The value will be `undefined`.
 
 **Example:**
 
 ```html
-<input type="text" letz="count:Number" value="10">
+<input type="text" letz="count:Number" value="10" />
 <p>The count is: <span getz="count"></span></p>
 
-<input type="checkbox" letz="isChecked:Boolean" checked>
+<input type="checkbox" letz="isChecked:Boolean" checked />
 <p>Is checked? <span getz="isChecked"></span></p>
 
 <div letz="user:Object">{"name": "Alex"}</div>
@@ -191,6 +191,20 @@ Toggles a CSS class on an element.
 <button togglez-class="#myDiv:highlight">Toggle Highlight</button>
 ```
 
+### 🌐 Network Requests (Experimental)
+
+#### `fetchz="url:variableName"`
+
+Fetches JSON data from a URL and stores it in a state variable.
+
+```html
+<button fetchz="https://jsonplaceholder.typicode.com/users/1:user">
+  Fetch User
+</button>
+<p>User Name: <span getz="user.name"></span></p>
+<p>Email: <span getz="user.email"></span></p>
+```
+
 ### 📋 Form Controls
 
 #### `submitz="selector"`
@@ -230,6 +244,7 @@ The `clickz` attribute is a powerful feature for handling custom scenarios not c
 **Best Practices:**
 
 1.  **Keep it Simple:** `clickz` is best for short, single actions.
+
     ```html
     <!-- Good -->
     <button clickz="alert('Profile saved!')">Save</button>
@@ -237,19 +252,20 @@ The `clickz` attribute is a powerful feature for handling custom scenarios not c
     ```
 
 2.  **Don't Write Complex Logic in HTML:** For anything more than a single command, define a function in a `<script>` tag and call it from `clickz`. This keeps your HTML clean and your logic maintainable.
+
     ```html
     <!-- Best Practice for Complex Logic -->
     <button clickz="validateAndSubmit()">Submit Form</button>
 
     <script>
       function validateAndSubmit() {
-        const user = document.getElementById('username').value;
-        if (user === '') {
-          alert('Username cannot be empty!');
+        const user = document.getElementById("username").value;
+        if (user === "") {
+          alert("Username cannot be empty!");
           return;
         }
         // ... more complex logic ...
-        document.getElementById('myForm').submit();
+        document.getElementById("myForm").submit();
       }
     </script>
     ```
@@ -400,6 +416,20 @@ Toggles a CSS class on an element.
 <button togglez-class="#myDiv:highlight">Toggle Highlight</button>
 ```
 
+### 🌐 Network Requests (Experimental)
+
+#### `fetchz="url:variableName"`
+
+Fetches JSON data from a URL and stores it in a state variable.
+
+```html
+<button fetchz="https://jsonplaceholder.typicode.com/users/1:user">
+  Fetch User
+</button>
+<p>User Name: <span getz="user.name"></span></p>
+<p>Email: <span getz="user.email"></span></p>
+```
+
 ### 📋 Form Controls
 
 #### `submitz="selector"`
@@ -430,6 +460,7 @@ The `clickz` attribute is a powerful feature for handling custom scenarios not c
 **Best Practices:**
 
 1.  **Keep it Simple:** `clickz` is best for short, single actions.
+
     ```html
     <!-- Good -->
     <button clickz="alert('Profile saved!')">Save</button>
@@ -437,19 +468,20 @@ The `clickz` attribute is a powerful feature for handling custom scenarios not c
     ```
 
 2.  **Don't Write Complex Logic in HTML:** For anything more than a single command, define a function in a `<script>` tag and call it from `clickz`. This keeps your HTML clean and your logic maintainable.
+
     ```html
     <!-- Best Practice for Complex Logic -->
     <button clickz="validateAndSubmit()">Submit Form</button>
 
     <script>
       function validateAndSubmit() {
-        const user = document.getElementById('username').value;
-        if (user === '') {
-          alert('Username cannot be empty!');
+        const user = document.getElementById("username").value;
+        if (user === "") {
+          alert("Username cannot be empty!");
           return;
         }
         // ... more complex logic ...
-        document.getElementById('myForm').submit();
+        document.getElementById("myForm").submit();
       }
     </script>
     ```
