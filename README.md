@@ -11,7 +11,7 @@ A mini JavaScript framework that lets you add interactivity to HTML without writ
 
 ## 📖 Quick Start
 
-1. Include `script.js` in your HTML
+1. Include Gen‑Z via CDN
 2. Add Gen-Z attributes to your HTML elements
 3. That's it! 🎉
 
@@ -23,7 +23,7 @@ A mini JavaScript framework that lets you add interactivity to HTML without writ
   </head>
   <body>
     <button alertz="Hello World!">Click me</button>
-    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/Nebulaz7/gen-z.js@0.0.1/dist/gen-z-v.0.0.1.js"></script>
   </body>
 </html>
 ```
