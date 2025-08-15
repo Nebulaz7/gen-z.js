@@ -49,8 +49,6 @@ Shows an alert with the text content of the specified element.
 <button alertz-text="#myText">Alert Text</button>
 ```
 
-### 📝 Value Manipulation
-
 ### 🧠 State Management
 
 Gen-Z.js includes a simple state management system that allows you to create interactive applications with ease. The state is a global object that holds all your application's data. You can interact with the state using the `letz`, `getz`, and `setz` attributes.
@@ -139,7 +137,7 @@ You can also use string manipulation and other JavaScript expressions:
 <p>Full Name: <span getz="fullName"></span></p>
 ```
 
-#### Value Manipulation (Legacy)
+### 📝 Value Manipulation (Legacy)
 
 The `getz` and `setz` attributes also support a legacy mode where they can get or set the value of another element directly using a CSS selector.
 
@@ -147,6 +145,7 @@ The `getz` and `setz` attributes also support a legacy mode where they can get o
 <input id="myInput" type="text" placeholder="Type here..." />
 <span getz="#myInput">Text appears here</span>
 <button setz="#myInput:Hello Gen-Z!">Set Value</button>
+<button setz="#myDiv:New content">Set Text</button>
 ```
 
 ### 👁️ Visibility Controls
@@ -307,222 +306,6 @@ All selectors use standard CSS selector syntax:
   <span getz="name">Name will appear here</span>
   <br />
   <span getz="email">Email will appear here</span>
-</div>
-```
-
-### Content Management
-
-```html
-<div id="content" class="box">Original content</div>
-
-<button showz="#content">Show</button>
-<button hidez="#content">Hide</button>
-<button togglez="#content">Toggle</button>
-<button togglez-class="#content:highlight">Highlight</button>
-<button setz="#content:New content!">Change Text</button>
-```
-
-## 🎨 Styling Gen-Z Elements
-
-Gen-Z works great with CSS. You can style elements based on their attributes:
-
-```css
-/* Style all alert buttons */
-[alertz] {
-  background: #007bff;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
-/* Style value display elements */
-[getz] {
-  background: #f8f9fa;
-  padding: 8px 12px;
-  border-radius: 4px;
-  font-family: monospace;
-}
-
-/* Hover effect class */
-.hover-effect {
-  background: #28a745 !important;
-  color: white !important;
-  transform: scale(1.1);
-}
-```
-
-## 📱 Browser Support
-
-Gen-Z.js works in all modern browsers that support:
-
-- `querySelector` and `querySelectorAll`
-- `addEventListener`
-- ES6 Classes (or use a transpiler for older browsers)
-
-## 🤝 Contributing
-
-#### `setz="selector:value"`
-
-Sets the value of an input or text content of an element.
-
-```html
-<button setz="#myInput:Hello Gen-Z!">Set Value</button>
-<button setz="#myDiv:New content">Set Text</button>
-```
-
-#### `clearz="selector"`
-
-Clears the value of an input or form.
-
-```html
-<button clearz="#myInput">Clear Input</button>
-<button clearz="#myForm">Clear Form</button>
-```
-
-### 👁️ Visibility Controls
-
-#### `togglez="selector"`
-
-Toggles the visibility of an element.
-
-```html
-<div id="myDiv">Toggle me!</div>
-<button togglez="#myDiv">Toggle</button>
-```
-
-#### `showz="selector"`
-
-Shows a hidden element.
-
-```html
-<button showz="#myDiv">Show Element</button>
-```
-
-#### `hidez="selector"`
-
-Hides an element.
-
-```html
-<button hidez="#myDiv">Hide Element</button>
-```
-
-#### `togglez-class="selector:className"`
-
-Toggles a CSS class on an element.
-
-```html
-<div id="myDiv">Style me!</div>
-<button togglez-class="#myDiv:highlight">Toggle Highlight</button>
-```
-
-### 🌐 Network Requests (Experimental)
-
-#### `fetchz="url:variableName"`
-
-Fetches JSON data from a URL and stores it in a state variable.
-
-```html
-<button fetchz="https://jsonplaceholder.typicode.com/users/1:user">
-  Fetch User
-</button>
-<p>User Name: <span getz="user.name"></span></p>
-<p>Email: <span getz="user.email"></span></p>
-```
-
-### 📋 Form Controls
-
-#### `submitz="selector"`
-
-Submits a form.
-
-```html
-<form id="myForm">
-  <input name="username" type="text" />
-  <button type="button" submitz="#myForm">Submit</button>
-</form>
-```
-
-### 🎨 Hover Effects
-
-#### `hoverz="className"`
-
-Adds/removes a class on hover.
-
-```html
-<div hoverz="hover-effect">Hover over me!</div>
-```
-
-### ⚡ Custom Actions with `clickz`
-
-The `clickz` attribute is a powerful feature for handling custom scenarios not covered by other attributes. It's your "escape hatch" for adding unique functionality.
-
-**Best Practices:**
-
-1.  **Keep it Simple:** `clickz` is best for short, single actions.
-
-    ```html
-    <!-- Good -->
-    <button clickz="alert('Profile saved!')">Save</button>
-    <button clickz="console.log('Debug info')">Log</button>
-    ```
-
-2.  **Don't Write Complex Logic in HTML:** For anything more than a single command, define a function in a `<script>` tag and call it from `clickz`. This keeps your HTML clean and your logic maintainable.
-
-    ```html
-    <!-- Best Practice for Complex Logic -->
-    <button clickz="validateAndSubmit()">Submit Form</button>
-
-    <script>
-      function validateAndSubmit() {
-        const user = document.getElementById("username").value;
-        if (user === "") {
-          alert("Username cannot be empty!");
-          return;
-        }
-        // ... more complex logic ...
-        document.getElementById("myForm").submit();
-      }
-    </script>
-    ```
-
-By following this pattern, you get the best of both worlds: the simplicity of Gen-Z attributes for event binding, and the power and maintainability of regular JavaScript for your custom logic.
-
-## 🎯 Selector Syntax
-
-All selectors use standard CSS selector syntax:
-
-- `#myId` - Select by ID
-- `.myClass` - Select by class
-- `div` - Select by tag name
-- `#myId, #otherId` - Multiple selectors (where supported)
-
-## 💡 Examples
-
-### Interactive Counter
-
-```html
-<span id="counter">0</span>
-<button clickz="document.getElementById('counter').textContent++">+</button>
-<button clickz="document.getElementById('counter').textContent--">-</button>
-```
-
-### Dynamic Form
-
-```html
-<form id="contactForm">
-  <input id="name" name="name" placeholder="Your name" />
-  <input id="email" name="email" type="email" placeholder="Your email" />
-
-  <button type="button" setz="#name:John Doe">Fill Name</button>
-  <button type="button" clearz="#contactForm">Clear All</button>
-  <button type="button" submitz="#contactForm">Submit</button>
-</form>
-
-<div>
-  <span getz="#name">Name will appear here</span>
-  <br />
-  <span getz="#email">Email will appear here</span>
 </div>
 ```
 
