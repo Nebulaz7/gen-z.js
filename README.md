@@ -7,7 +7,7 @@ A mini JavaScript framework that lets you add interactivity to HTML without writ
 - **Zero JavaScript knowledge required** - Add functionality through HTML attributes
 - **Lightweight** - Small footprint, fast loading
 - **Intuitive** - All attributes end with "z" for easy recognition
-- **Powerful** - Covers most common interactive needs
+- **Powerful** - Covers most common interactive need.
 
 ## 📖 Quick Start
 
