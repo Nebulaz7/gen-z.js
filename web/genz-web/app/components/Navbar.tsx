@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Equal, X, ArrowUpRight, Rss, File } from "lucide-react";
+import { X, ArrowUpRight, Rss, File } from "lucide-react";
 import Link from "next/link";
 
 const MotionLink = motion(Link);
