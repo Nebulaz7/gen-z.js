@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import { Equal, X } from "lucide-react";
+import { Equal, X, ArrowUpRight, Rss, File } from "lucide-react";
 import Link from "next/link";
 
 const MotionLink = motion(Link);
@@ -112,25 +112,28 @@ const Navbar = () => {
             <li>
               <Link
                 href="/"
-                className="text-2xl text-black hover:text-white transition-colors"
+                className="text-2xl text-black border-b-2 border-black hover:text-3xl  transition-colors"
               >
                 Docs
+                <File className="inline-block ml-2" size={24} />
               </Link>
             </li>
             <li>
               <Link
                 href="/"
-                className="text-2xl text-black hover:text-white transition-colors"
+                className="text-2xl text-black border-b-2 border-black hover:text-3xl  transition-colors"
               >
                 Github
+                <ArrowUpRight className="inline-block ml-2" size={24} />
               </Link>
             </li>
             <li>
               <Link
                 href="/"
-                className="text-2xl text-black hover:text-white transition-colors"
+                className="text-2xl text-black border-b-2 border-black hover:text-3xl  transition-colors"
               >
                 Blog
+                <Rss className="inline-block ml-2" size={24} />
               </Link>
             </li>
             <li></li>
