@@ -7,6 +7,18 @@ import Link from "next/link";
 
 const MotionLink = motion(Link);
 
+const DoubleLineIcon = ({ size = 30, className = "" }) => (
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 30 30"
+    fill="none"
+    className={className}
+  >
+    <rect x="4" y="9" width="22" height="2" rx="1" fill="currentColor" />
+    <rect x="4" y="19" width="22" height="2" rx="1" fill="currentColor" />
+  </svg>
+);
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -79,7 +91,7 @@ const Navbar = () => {
             {isMenuOpen ? (
               <X size={30} className="hidden" />
             ) : (
-              <Equal size={30} className="font-bold" />
+              <DoubleLineIcon />
             )}
           </motion.div>
         </button>
@@ -109,7 +121,7 @@ const Navbar = () => {
         {/* Menu Content */}
         <div className="flex-1 bg-white pt-4  pb-0 rounded-2xl m-4 shadow-[2px_4px_0px_0px_#fafa10]">
           <ul className="flex flex-col gap-6 pl-6">
-            <li>
+            <li className="gap-0">
               <Link
                 href="/"
                 className="text-2xl text-black border-b-2 border-black hover:text-3xl  transition-colors"
