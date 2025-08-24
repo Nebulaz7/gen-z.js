@@ -50,7 +50,7 @@ const Navbar = () => {
               className="hover:text-white hover:bg-[#555555] px-3 py-1 hover:rounded-xl text-xl"
               layout
             >
-              Blog
+              Github
             </MotionLink>
           </li>
           <li>
@@ -59,7 +59,7 @@ const Navbar = () => {
               className="hover:text-white hover:bg-[#555555] px-3 py-1 hover:rounded-xl text-xl"
               layout
             >
-              Github
+              Blog
             </MotionLink>
           </li>
         </ul>
@@ -67,7 +67,7 @@ const Navbar = () => {
         {/* Desktop Buttons */}
         <div className="hidden md:flex items-center gap-6">
           <motion.button
-            className="bg-[var(--primary)] text-[1.1rem] text-black px-5 cursor-pointer py-2 rounded-full flex items-center gap-2 hover:bg-amber-300 transition duration-300"
+            className="bg-[#f2f2f2] text-[1.1rem] text-black px-5 cursor-pointer py-2 rounded-full flex items-center gap-2 shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] transition duration-300"
             whileHover="hover"
             variants={{
               hover: { scale: 1.0 },
