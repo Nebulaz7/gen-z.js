@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { X, ArrowUpRight, Rss, File } from "lucide-react";
 import Link from "next/link";
+import Image from "next/image";
 
 const MotionLink = motion(Link);
 
@@ -24,14 +25,22 @@ const Navbar = () => {
 
   return (
     <motion.header
-      initial={{ opacity: 0, y: -20 }}
+      initial={{ opacity: 1, y: 0 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="fixed top-0 left-0 right-0 flex py-3 px-3 bg-[121212]/70 lg:bg-[#333333]/70 border-white border-b-1 m-0 lg:py-4 font-sm bg-primary backdrop-blur-xl z-30 lg:shadow-sm lg:shadow-yellow-600/50"
+      className="fixed top-0 left-0 right-0 flex py-3 px-3 bg-[121212]/70 lg:bg-[#121212]/70 m-0 lg:py-4 font-sm bg-primary backdrop-blur-xl z-30"
+      // lg:shadow-sm lg:shadow-yellow-600/50
     >
       <nav className="flex justify-between items-center gap-5 w-full max-w-7xl px-2 md:px-6 h-[3.5rem] mx-auto">
         <h1 className="font-md text-white text-2xl">GenZ logo</h1>
+        {/* <Image
+          src="/logo.svg"
+          alt="GenZ Logo"
+          width={120}
+          height={40}
+          className="object-contain"
+        /> */}
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-6 text-gray-300">
@@ -70,7 +79,7 @@ const Navbar = () => {
             className="bg-[#f2f2f2] text-[1.1rem] text-black px-5 cursor-pointer py-2 rounded-full flex items-center gap-2 shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] transition duration-300"
             whileHover="hover"
             variants={{
-              hover: { scale: 1.0 },
+              hover: { scale: 0.9 },
             }}
             layout
           >

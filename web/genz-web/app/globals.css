@@ -22,8 +22,51 @@ body {
 }
 
 .grid-background {
-  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M 20 0 L 0 0 0 20' fill='none' stroke='rgba(139, 92, 246, 0.3)' stroke-width='0.5'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='10' cy='10' r='1' fill='rgb(250, 250, 16, 0.3)'/%3E%3C/svg%3E");
   background-size: 20px 20px;
+}
+
+.grain {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  top: 0;
+}
+
+.highlight-text {
+  position: relative;
+  z-index: 1;
+}
+
+.highlight-text::before {
+  content: "";
+  position: absolute;
+  left: -0.1em;
+  right: -0.1em;
+  bottom: 0;
+  height: 0.3em;
+  background: rgba(250, 250, 16, 0.6);
+  z-index: -1;
+  transform: skewY(-1deg);
+}
+
+.gradient-text {
+  background: radial-gradient(circle, #3cff52 0%, #71eaff 50%, #dddd31 100%);
+  background-size: 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent; /* fallback */
+  animation: textShine 3s ease-in-out infinite alternate;
+}
+
+@keyframes textShine {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
 }
 
 /* Custom scrollbar */
