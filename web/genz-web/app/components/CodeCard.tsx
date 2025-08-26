@@ -1,6 +1,5 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Mic } from "lucide-react";
 import { color, motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 
@@ -23,15 +22,13 @@ const CodeCard = () => {
   const codeLines = [
     {
       num: 1,
-      segments: [
-        { text: "<!DOCTYPE html>", color: "#ff79c6" }, // pink for doctype
-      ],
+      segments: [{ text: "<!DOCTYPE html>", color: "#6a7282" }],
     },
     {
       num: 2,
       segments: [
-        { text: "<", color: "#d1d5dc" }, // cyan for brackets
-        { text: "html", color: "#fb64b6" }, // green for tag names
+        { text: "<", color: "#d1d5dc" },
+        { text: "html", color: "#fb64b6" },
         { text: ">", color: "#d1d5dc" },
       ],
     },
@@ -174,6 +171,9 @@ const CodeCard = () => {
                   /> */}
                 </code>
               </pre>
+              <button className="text-black cursor-pointer bg-[#f2f2f2] px-4 py-2 ml-3 mt-2 rounded-full shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] hover:scale-90 transition duration-300">
+                Try it out
+              </button>
             </div>
           </div>
         </div>
