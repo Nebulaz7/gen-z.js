@@ -142,7 +142,7 @@ const CodeCard = () => {
         <div className="w-full">
           <div className="relative">
             <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400/10 to-yellow-500/20 rounded-2xl blur-xl" />
-            <div className="relative border-2 border-[rgba(250, 250, 16, 0.922)] bg-gray-900 rounded-xl p-6 overflow-hidden">
+            <div className="relative border-0.5 border-[#fafa10] bg-gray-900 rounded-xl p-6 overflow-hidden">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-3 h-3 bg-red-500 rounded-full" />
                 <div className="w-3 h-3 bg-yellow-500 rounded-full" />

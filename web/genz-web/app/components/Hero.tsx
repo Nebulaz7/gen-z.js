@@ -3,8 +3,8 @@ import CodeCard from "./CodeCard";
 
 const Hero = () => {
   return (
-    <section className="relative flex flex-col items-center justify-center min-h-[100vh] px-6 py-12 md:pt-20 lg:pt-24">
-      <div className="text-left mt:20 md:text-center">
+    <section className="relative items-center justify-center min-h-[100vh] px-6 py-12 md:pt-20 lg:pt-24">
+      <div className="text-left mt-15 md:text-center">
         <h1 className="text-5xl lg:text-7xl lg:px-25 font-light hero-font leading-tight mb-6">
           Zero JavaScript <br />{" "}
           <span className="highlight-text">Knowledge</span>, Infinite <br />{" "}
