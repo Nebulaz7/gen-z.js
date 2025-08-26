@@ -136,7 +136,7 @@ const Navbar = () => {
                 className="text-2xl text-black border-b-2 border-black hover:text-3xl  transition-colors"
               >
                 Docs
-                <File className="inline-block ml-2" size={24} />
+                <File className="inline-block ml-0.5" size={24} />
               </Link>
             </li>
             <li>
@@ -145,7 +145,7 @@ const Navbar = () => {
                 className="text-2xl text-black border-b-2 border-black hover:text-3xl  transition-colors"
               >
                 Github
-                <ArrowUpRight className="inline-block ml-2" size={24} />
+                <ArrowUpRight className="inline-block ml-0.5" size={24} />
               </Link>
             </li>
             <li>
@@ -154,7 +154,7 @@ const Navbar = () => {
                 className="text-2xl text-black border-b-2 border-black hover:text-3xl  transition-colors"
               >
                 Blog
-                <Rss className="inline-block ml-2" size={24} />
+                <Rss className="inline-block ml-0.5" size={24} />
               </Link>
             </li>
             <li></li>

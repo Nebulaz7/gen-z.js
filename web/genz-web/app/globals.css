@@ -80,15 +80,26 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #c9cccf;
+  background: #cacaca;
   border-radius: 5px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
   background: #959799;
 }
+/* custom text select */
+::selection {
+  background-color: #bbbbbb;
+  color: #ffffff;
+}
+
+/* For older Firefox versions */
+::-moz-selection {
+  background-color: #bbbbbb;
+  color: #ffffff;
+}
 
 .hero-font {
   font-family: "Poppins", sans-serif;
-  color: var(--foreground);
+  /* color: var(--foreground); */
 }

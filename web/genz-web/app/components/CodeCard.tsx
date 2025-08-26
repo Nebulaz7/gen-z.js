@@ -129,11 +129,7 @@ const CodeCard = () => {
   //   const displayed = fullText.slice(0, visibleChars);
 
   return (
-    <section
-      id="features"
-      aria-labelledby="features-label"
-      className="px-3 py-6 sm:py-12"
-    >
+    <section id="features" aria-labelledby="features-label" className=" py-6">
       <div className="min-w-[90vw] items-center px-5 justify-center">
         {/* Demo section */}
         <div className="w-full">
@@ -146,7 +142,7 @@ const CodeCard = () => {
                 <div className="w-3 h-3 bg-green-500 rounded-full" />
                 <span className="ml-4 text-gray-400 text-sm">index.html</span>
               </div>
-              <pre className="text-md text-gray-300 bg-gray-700/50 p-3 rounded-lg whitespace-pre-wrap break-words leading-relaxed min-h-[10rem]">
+              <pre className="text-sm md:text-md text-gray-300 bg-gray-700/50 p-3 rounded-lg whitespace-pre-wrap break-words leading-relaxed min-h-[10rem]">
                 <code>
                   {codeLines.map((line) => (
                     <div key={line.num}>

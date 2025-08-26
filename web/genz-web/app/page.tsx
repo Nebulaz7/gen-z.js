@@ -1,4 +1,6 @@
 import GrainOverlay from "./Animations/GrainOverlay";
+import Features from "./components/Features";
+import About from "./components/About";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 
@@ -8,6 +10,8 @@ export default function Home() {
       <GrainOverlay />
       <Navbar />
       <Hero />
+      <About />
+      <Features />
     </div>
   );
 }
