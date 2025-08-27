@@ -26,6 +26,40 @@ const Features = () => {
     },
   ];
 
+  const codeLines = [
+    {
+      num: 1,
+      segments: [
+        { text: "<", color: "#d1d5dc" },
+        { text: "input", color: "#fb64b6" },
+        { text: " ", color: "#f8f8f2" },
+        { text: "letz=", color: "#ffb86c" },
+        { text: '"name"', color: "#f1fa8c" },
+        { text: " />", color: "#d1d5dc" },
+      ],
+    },
+    {
+      num: 2,
+      segments: [
+        { text: "<", color: "#f8f8f2" },
+        { text: "p", color: "#fb64b6" },
+        { text: ">", color: "#f8f8f2" },
+        { text: "Hello ", color: "#f8f8f2" },
+        { text: "<", color: "#d1d5dc" },
+        { text: "span", color: "#fb64b6" },
+        { text: " ", color: "#f8f8f2" },
+        { text: "getz=", color: "#ffb86c" },
+        { text: '"name"', color: "#f1fa8c" },
+        { text: "></", color: "#d1d5dc" },
+        { text: "span", color: "#fb64b6" },
+        { text: ">", color: "#f8f8f2" },
+        { text: "!</", color: "#f8f8f2" },
+        { text: "p", color: "#fb64b6" },
+        { text: ">", color: "#f8f8f2" },
+      ],
+    },
+  ];
+
   return (
     <section className="py-12 md:py-16 lg:py-20 px-4 md:px-6">
       <div className="max-w-6xl mx-auto">
@@ -52,7 +86,7 @@ const Features = () => {
               <div className="mb-3 md:mb-4">
                 <Zap className="w-10 h-10 md:w-12 md:h-12 text-[#3cff52]" />
               </div>
-              <h1 className="text-lg md:text-2xl font-light mb-2 md:mb-3">
+              <h1 className="text-lg md:text-2xl hero-font font-light mb-2 md:mb-3">
                 Lightweight & Fast
               </h1>
               <p className="text-sm md:text-base leading-relaxed">
@@ -74,11 +108,18 @@ const Features = () => {
               Built-in state management with letz, getz, and setz attributes. No
               complex setup or boilerplate code required.
             </p>
-            <div className="bg-gray-50 rounded-lg p-3 md:p-4 overflow-x-auto">
-              <code className="text-xs md:text-sm text-gray-700 whitespace-nowrap">
-                {'<input letz="name" />'}
-                <br />
-                {'<p>Hello <span getz="name"></span>!</p>'}
+            <div className="bg-gray-700/50 rounded-lg p-3 md:p-4 overflow-x-auto">
+              <code className="text-xs md:text-sm  text-white whitespace-nowrap">
+                {codeLines.map((line) => (
+                  <div key={line.num}>
+                    <span style={{ color: "#6a7282" }}>{line.num}</span>{" "}
+                    {line.segments?.map((segment, index) => (
+                      <span key={index} style={{ color: segment.color }}>
+                        {segment.text}
+                      </span>
+                    ))}
+                  </div>
+                ))}
               </code>
             </div>
           </div>
