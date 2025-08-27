@@ -34,7 +34,7 @@ const Features = () => {
           {/* Left side: 2 small cards stacked */}
           <div className="flex flex-col gap-6 md:gap-8 order-2 lg:order-1">
             {/* Small card 1 */}
-            <div className="bg-black text-white shadow-[1px_1px_0px_0px_#71eaff] rounded-xl p-4 md:p-6 transform hover:-translate-y-2 transition-all duration-300 flex-1">
+            <div className="bg-black text-white shadow-[2px_2px_3px_1px_#71eaff]  hover:shadow rounded-xl p-4 md:p-6  transition-all duration-300 flex-1">
               <div className="mb-3 md:mb-4">
                 <Braces className="w-10 h-10 md:w-12 md:h-12 text-[#71eaff]" />
               </div>
@@ -48,7 +48,7 @@ const Features = () => {
             </div>
 
             {/* Small card 2 */}
-            <div className="bg-black text-white rounded-xl shadow-[1px_1px_0px_0px_#3cff52] p-4 md:p-6 transform hover:-translate-y-2 transition-all duration-300 flex-1">
+            <div className="bg-black text-white rounded-xl shadow-[2px_2px_3px_1px_#3cff52] hover:shadow p-4 md:p-6  transition-all duration-300 flex-1">
               <div className="mb-3 md:mb-4">
                 <Zap className="w-10 h-10 md:w-12 md:h-12 text-[#3cff52]" />
               </div>
@@ -63,7 +63,7 @@ const Features = () => {
           </div>
 
           {/* Right side: 1 tall card */}
-          <div className="bg-black text-white shadow-[1px_1px_0px_0px_#fafa10] rounded-xl p-6 md:p-8 transform hover:-translate-y-2 transition-all duration-300 flex flex-col justify-center order-1 lg:order-2 min-h-[300px] lg:min-h-0">
+          <div className="bg-black text-white shadow-[3px_3px_4px_2px_#fafa10] hover:shadow rounded-xl p-6 md:p-8  transition-all duration-300 flex flex-col justify-center order-1 lg:order-2 min-h-[300px] lg:min-h-0">
             <div className="mb-4 md:mb-6">
               <RefreshCw className="w-12 h-12 md:w-20 md:h-20 text-yellow-500" />
             </div>
