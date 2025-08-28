@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { motion } from "framer-motion";
 import { Zap, Braces, RefreshCw } from "lucide-react";
 
 const Features = () => {
@@ -61,14 +63,20 @@ const Features = () => {
   ];
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 px-4 md:px-6">
+    <motion.section
+      initial={{ opacity: 0, y: -50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1 }}
+      className="py-12 md:py-16 lg:py-20 px-4 md:px-6"
+    >
       <div className="max-w-6xl mx-auto">
         {/* Responsive Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 min-h-[400px] lg:h-[600px]">
           {/* Left side: 2 small cards stacked */}
           <div className="flex flex-col gap-6 md:gap-8 order-2 lg:order-1">
             {/* Small card 1 */}
-            <div className="bg-black text-white shadow-[2px_2px_3px_1px_#71eaff]  hover:shadow rounded-xl p-4 md:p-6  transition-all duration-300 flex-1">
+            <div className="bg-black text-white shadow-[2px_2px_3px_1px_#71eaff]  hover:shadow-[3px_3px_4px_2px_#71eaff] rounded-xl p-4 md:p-6  transition-all duration-300 flex-1">
               <div className="mb-3 md:mb-4">
                 <Braces className="w-10 h-10 md:w-12 md:h-12 text-[#71eaff]" />
               </div>
@@ -82,7 +90,7 @@ const Features = () => {
             </div>
 
             {/* Small card 2 */}
-            <div className="bg-black text-white rounded-xl shadow-[2px_2px_3px_1px_#3cff52] hover:shadow p-4 md:p-6  transition-all duration-300 flex-1">
+            <div className="bg-black text-white rounded-xl shadow-[2px_2px_3px_1px_#3cff52] hover:shadow-[3px_3px_4px_2px_#3cff52]  p-4 md:p-6  transition-all duration-300 flex-1">
               <div className="mb-3 md:mb-4">
                 <Zap className="w-10 h-10 md:w-12 md:h-12 text-[#3cff52]" />
               </div>
@@ -97,7 +105,7 @@ const Features = () => {
           </div>
 
           {/* Right side: 1 tall card */}
-          <div className="bg-black text-white shadow-[3px_3px_4px_2px_#fafa10] hover:shadow rounded-xl p-6 md:p-8  transition-all duration-300 flex flex-col justify-center order-1 lg:order-2 min-h-[300px] lg:min-h-0">
+          <div className="bg-black text-white shadow-[3px_3px_4px_2px_#fafa10] hover:shadow-[4px_4px_5px_3px_#fafa10] rounded-xl p-6 md:p-8  transition-all duration-300 flex flex-col justify-center order-1 lg:order-2 min-h-[300px] lg:min-h-0">
             <div className="mb-4 md:mb-6">
               <RefreshCw className="w-12 h-12 md:w-20 md:h-20 text-yellow-500" />
             </div>
@@ -125,7 +133,7 @@ const Features = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 

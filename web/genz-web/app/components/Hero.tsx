@@ -1,9 +1,17 @@
+"use client";
 import React from "react";
+import { motion } from "framer-motion";
 import CodeCard from "./CodeCard";
 
 const Hero = () => {
   return (
-    <section className="relative items-center justify-center min-h-[100vh] px-6 py-12 pb-8 md:pt-20 lg:pt-24">
+    <motion.section
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1 }}
+      className="relative items-center justify-center min-h-[100vh] px-6 py-12 pb-8 md:pt-20 lg:pt-24"
+    >
       <div className="text-left mt-15 md:text-center">
         <h1 className="text-5xl lg:text-7xl lg:px-25 font-light hero-font leading-tight mb-6">
           Zero JavaScript <br />{" "}
@@ -19,7 +27,7 @@ const Hero = () => {
       <div>
         <CodeCard />
       </div>
-    </section>
+    </motion.section>
   );
 };
 
