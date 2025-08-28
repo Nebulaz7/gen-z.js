@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { X, ArrowUpRight, Rss, File } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
@@ -22,25 +22,41 @@ const DoubleLineIcon = ({ size = 30, className = "" }) => (
 );
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      setIsVisible(currentScrollY < lastScrollY || currentScrollY < 10);
+      setLastScrollY(currentScrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
 
   return (
     <motion.header
-      initial={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
       viewport={{ once: true }}
-      className="fixed top-0 left-0 right-0 flex py-3 px-3 bg-[121212]/70 lg:bg-[#121212]/70 m-0 lg:py-4 font-sm bg-primary backdrop-blur-xl z-30"
-      // lg:shadow-sm lg:shadow-yellow-600/50
+      className={`fixed top-0 left-0 right-0 transition-transform duration-300 ${
+        isVisible ? "translate-y-0" : "-translate-y-full py-2 px-2"
+      } flex py-3 px-3 bg-[121212]/70 lg:bg-transparent m-0 lg:py-4 font-sm backdrop-blur-xl z-30`}
     >
       <nav className="flex justify-between items-center gap-5 w-full max-w-7xl px-2 md:px-6 h-[3.5rem] mx-auto">
-        <h1 className="font-md text-white text-2xl">GenZ logo</h1>
-        {/* <Image
-          src="/logo.svg"
-          alt="GenZ Logo"
-          width={120}
-          height={40}
-          className="object-contain"
-        /> */}
+        <h1 className="font-md flex text-white text-2xl">
+          <Image
+            src="/logo.svg"
+            alt="GenZ Logo"
+            width={40}
+            height={30}
+            className="object-contain"
+          />
+          GenZ.js
+        </h1>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-6 text-gray-300">

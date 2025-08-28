@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Background Circle (optional, remove for pure minimalist look) -->
+  <circle cx="100" cy="100" r="95" fill="black" />
+
+  <!-- Angle Brackets for Web/HTML reference -->
+  <text x="25" y="115" font-family="monospace" font-size="48" fill="white">&lt;</text>
+  <text x="145" y="115" font-family="monospace" font-size="48" fill="white">&gt;</text>
+
+  <!-- The Bold Stylized Z -->
+  <text x="70" y="125" font-family="monospace" font-size="72" font-weight="bold" fill="white">Z</text>
+</svg>

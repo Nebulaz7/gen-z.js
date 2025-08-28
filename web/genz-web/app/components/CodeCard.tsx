@@ -168,7 +168,7 @@ const CodeCard = () => {
                 </code>
               </pre>
               <button className="text-black cursor-pointer bg-[#f2f2f2] px-4 py-2 ml-3 mt-2 rounded-full shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] hover:scale-90 transition duration-300">
-                Try it out
+                Get Started
               </button>
             </div>
           </div>
