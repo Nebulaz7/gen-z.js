@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -7,8 +8,17 @@ const Footer = () => {
       <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
         {/* Copyright Text */}
         <div className="text-gray-400 text-sm  mb-4 sm:mb-0">
-          <h1 className="mb-2">GenZ.js logo</h1>
-          <h1 className="mb-1 text-gray-200">
+          <h1 className="font-md flex text-center text-white text-xl mb-4">
+            <Image
+              src="/logo.svg"
+              alt="GenZ Logo"
+              width={40}
+              height={30}
+              className="object-contain"
+            />
+            GenZ.js
+          </h1>
+          <h1 className="mb-2 text-gray-200">
             A Framework created with 💛 by{" "}
             <a href="https://x.com/Nebulaz7" className="text-yellow-500">
               Peters Joshua

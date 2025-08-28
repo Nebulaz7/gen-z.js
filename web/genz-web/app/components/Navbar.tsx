@@ -16,8 +16,8 @@ const DoubleLineIcon = ({ size = 30, className = "" }) => (
     fill="none"
     className={className}
   >
-    <rect x="4" y="9" width="22" height="2" rx="1" fill="currentColor" />
-    <rect x="4" y="19" width="22" height="2" rx="1" fill="currentColor" />
+    <rect x="4" y="9" width="24" height="2" rx="1" fill="currentColor" />
+    <rect x="4" y="19" width="24" height="2" rx="1" fill="currentColor" />
   </svg>
 );
 const Navbar = () => {
