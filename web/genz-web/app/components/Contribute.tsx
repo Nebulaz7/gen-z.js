@@ -3,24 +3,11 @@ import { GitBranch, ExternalLink } from "lucide-react";
 
 const Contribute = () => {
   return (
-    // <div>
-    //   <h1>
-    //
-    //   </h1>
-
-    //   <p>
-    //
-    //   </p>
-    // </div>
     <section className="relative w-[80vw] mx-auto my-5 rounded-4xl bg-gradient-to-b shadow-[4px_4px_0px_0px_#fafa10] from-gray-100 to-gray-200">
       <div className="relative flex flex-col items-center justify-center px-6 py-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Main heading */}
           <h2 className="hero-font text-3xl md:text-4xl lg:text-6xl font-light leading-tight text-black mb-6">
-            <span>
-              {" "}
-              <GitBranch size={24} />
-            </span>{" "}
             Want to contribute?
           </h2>
 
