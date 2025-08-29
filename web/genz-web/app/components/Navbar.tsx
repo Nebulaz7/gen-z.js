@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { use } from "react";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { X, ArrowUpRight, Rss, File } from "lucide-react";
@@ -24,6 +24,23 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [repoStars, setRepoStars] = useState(0);
+
+  const getRepoStars = async () => {
+    const url = "https://api.github.com/repos/Nebulaz7/gen-z.js";
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      const stars = data.stargazers_count;
+      setRepoStars(stars);
+    } catch {
+      console.log("Error fetching repo data");
+    }
+  };
+
+  useEffect(() => {
+    getRepoStars();
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -53,9 +70,12 @@ const Navbar = () => {
             alt="GenZ Logo"
             width={40}
             height={30}
-            className="object-contain"
+            className="object-contain rounded-full"
           />
-          GenZ.js
+          GenZ.js{" "}
+          <span className="text-xs bg-secondary text-gray-50 px-2 py-1 rounded-full">
+            v1.1.0
+          </span>
         </h1>
 
         {/* Desktop Menu */}
@@ -92,14 +112,23 @@ const Navbar = () => {
         {/* Desktop Buttons */}
         <div className="hidden md:flex items-center gap-6">
           <motion.button
-            className="bg-[#f2f2f2] text-[1.1rem] text-black px-5 cursor-pointer py-2 rounded-full flex items-center gap-2 shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] transition duration-300"
+            className="bg-[#f2f2f2] text-lg text-black sm: px-5 cursor-pointer py-2 rounded-full flex items-center gap-2 shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] transition duration-300"
             whileHover="hover"
             variants={{
               hover: { scale: 0.9 },
             }}
             layout
+            onClick={() =>
+              (window.location.href = "https://github.com/Nebulaz7/gen-z.js")
+            }
           >
-            v1.0.0
+            Star on github
+            <Link
+              href="https://github.com/Nebulaz7/gen-z.js"
+              className="bg-black text-white px-3 py-1 rounded-full text-sm"
+            >
+              {repoStars} ★
+            </Link>
           </motion.button>
         </div>
 
