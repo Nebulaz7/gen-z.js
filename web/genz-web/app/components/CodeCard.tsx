@@ -122,7 +122,7 @@ const CodeCard = () => {
     },
   ];
 
-  const [visibleChars, setVisibleChars] = useState(0);
+  // const [visibleChars, setVisibleChars] = useState(0);
 
   //   useEffect(() => {
   //     if (visibleChars >= fullText.length) return;
