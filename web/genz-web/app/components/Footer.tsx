@@ -19,7 +19,7 @@ const Footer = () => {
             GenZ.js
           </h1>
           <h1 className="mb-2 text-gray-200">
-            A Framework created with 💛 by{" "}
+            A framework created with 💛 by{" "}
             <a href="https://x.com/Nebulaz7" className="text-yellow-500">
               Peters Joshua
             </a>

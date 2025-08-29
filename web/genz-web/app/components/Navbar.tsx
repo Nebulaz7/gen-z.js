@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { X, ArrowUpRight, Rss, File } from "lucide-react";
+import { X, ArrowUpRight, Rss, File, GithubIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -128,6 +128,29 @@ const Navbar = () => {
               className="bg-black text-white px-3 py-1 rounded-full text-sm"
             >
               {repoStars} ★
+            </Link>
+          </motion.button>
+        </div>
+
+        {/* Star button for mobile */}
+        <div className="md:hidden lg:hidden flex items-center gap-6">
+          <motion.button
+            className="bg-[#f2f2f2] text-lg text-black px-3 cursor-pointer py-1 rounded-full flex items-center gap-2 shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] transition duration-300"
+            whileHover="hover"
+            variants={{
+              hover: { scale: 0.9 },
+            }}
+            layout
+            onClick={() =>
+              (window.location.href = "https://github.com/Nebulaz7/gen-z.js")
+            }
+          >
+            <GithubIcon size={20} />
+            <Link
+              href="https://github.com/Nebulaz7/gen-z.js"
+              className="bg-black flex text-white px-2 py-1 rounded-full text-sm"
+            >
+              {repoStars} <span className="ml-0.5">★</span>
             </Link>
           </motion.button>
         </div>
