@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { color, motion } from "framer-motion";
 import type { Variants } from "framer-motion";
+import { text } from "stream/consumers";
 
 // Define variants for the blinking cursor (typed)
 const cursorVariants: Variants = {
@@ -91,9 +92,13 @@ const CodeCard = () => {
         { text: "script", color: "#fb64b6" },
         { text: " ", color: "#f8f8f2" },
         {
-          text: 'src="https://cdn.jsdelivr.net/gh/Nebulaz7/gen-z.js@0.0.1/dist/gen-z-v.0.0.1.js"',
+          text: "src=",
           color: "#ffb86c",
         }, // orange for Gen-Z attributes
+        {
+          text: '"https://cdn.jsdelivr.net/gh/Nebulaz7/gen-z.js@1.1.0/dist/gen-z.min.js"',
+          color: "#f1fa8c",
+        },
         { text: ">", color: "#d1d5dc" },
         { text: "</", color: "#d1d5dc" },
         { text: "script", color: "#fb64b6" },
