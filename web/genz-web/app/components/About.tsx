@@ -23,8 +23,8 @@ const About = () => {
           <p className="text-lg md:text-xl text-black pb-4 max-w-3xl mx-auto leading-relaxed">
             Genz.js is a mini JavaScript framework that lets you add
             interactivity to HTML without writing JavaScript code. Just add
-            attributes ending with "z" to your HTML elements! Perfect for
-            creating easy and simple project fast.
+            attributes ending with &quot;z&quot; to your HTML elements! Perfect
+            for creating easy and simple project fast.
           </p>
           <button className="text-[#f2f2f2] cursor-pointer bg-[#000000] px-4 py-2 ml-3 mt-2 rounded-full shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] hover:scale-90 transition duration-300">
             Try it out!

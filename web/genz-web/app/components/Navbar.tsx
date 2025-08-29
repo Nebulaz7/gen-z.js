@@ -1,5 +1,5 @@
 "use client";
-import React, { use } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { X, ArrowUpRight, Rss, File } from "lucide-react";

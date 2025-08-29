@@ -4,29 +4,29 @@ import { motion } from "framer-motion";
 import { Zap, Braces, RefreshCw } from "lucide-react";
 
 const Features = () => {
-  const features = [
-    {
-      title: "Zero JavaScript knowledge required",
-      description:
-        "Build interactive features using only HTML attributes. No JavaScript knowledge required.",
-      icon: "⚡",
-      color: "from-blue-500 to-blue-600",
-    },
-    {
-      title: "Lightweight",
-      description:
-        "Small footprint, fast loading, lightweight framework with minimal footprint. Perfect for rapid prototyping.",
-      icon: "🚀",
-      color: "from-green-500 to-green-600",
-    },
-    {
-      title: "Intuitive Syntax",
-      description:
-        "All attributes end with 'z' for easy recognition. Simple and memorable.",
-      icon: "🎯",
-      color: "from-purple-500 to-purple-600",
-    },
-  ];
+  // const features = [
+  //   {
+  //     title: "Zero JavaScript knowledge required",
+  //     description:
+  //       "Build interactive features using only HTML attributes. No JavaScript knowledge required.",
+  //     icon: "⚡",
+  //     color: "from-blue-500 to-blue-600",
+  //   },
+  //   {
+  //     title: "Lightweight",
+  //     description:
+  //       "Small footprint, fast loading, lightweight framework with minimal footprint. Perfect for rapid prototyping.",
+  //     icon: "🚀",
+  //     color: "from-green-500 to-green-600",
+  //   },
+  //   {
+  //     title: "Intuitive Syntax",
+  //     description:
+  //       "All attributes end with 'z' for easy recognition. Simple and memorable.",
+  //     icon: "🎯",
+  //     color: "from-purple-500 to-purple-600",
+  //   },
+  // ];
 
   const codeLines = [
     {

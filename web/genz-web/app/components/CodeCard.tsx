@@ -1,22 +1,21 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { color, motion } from "framer-motion";
-import type { Variants } from "framer-motion";
-import { text } from "stream/consumers";
+import React, { useState } from "react";
+
+// import type { Variants } from "framer-motion";
 
 // Define variants for the blinking cursor (typed)
-const cursorVariants: Variants = {
-  hidden: { opacity: 0 },
-  blink: {
-    opacity: [0, 1, 0],
-    transition: {
-      duration: 0.9,
-      repeat: Infinity, // loop forever
-      repeatType: "loop", // helps some versions' typings
-      ease: "linear",
-    },
-  },
-};
+// const cursorVariants: Variants = {
+//   hidden: { opacity: 0 },
+//   blink: {
+//     opacity: [0, 1, 0],
+//     transition: {
+//       duration: 0.9,
+//       repeat: Infinity, // loop forever
+//       repeatType: "loop", // helps some versions' typings
+//       ease: "linear",
+//     },
+//   },
+// };
 
 const CodeCard = () => {
   // Typewriter setup
