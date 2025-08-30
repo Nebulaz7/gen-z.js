@@ -1,0 +1,8 @@
+{
+    "label": "Attributes",
+    "position": 2,
+    "link": {
+        "type": "generated-index",
+        "description": "Attributes are special markers that can be added to HTML elements to provide additional functionality or behavior. In this section, we will explore various attributes that can be used to enhance your web development projects."
+    }
+}
