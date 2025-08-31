@@ -332,7 +332,6 @@ The `letz` attribute works in all modern browsers:
 ## Related Attributes
 
 - [`getz`](./Getz.md) - Display variable values
-- [`setz`](./Setz.md) - Update variable values
 - [`hidez`](./Hidez.md) - Hide elements containing data
 - [`clickz`](./Clickz.md) - Handle user interactions
 
