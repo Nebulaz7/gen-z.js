@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Getz
 
 The `getz` attribute displays the value of a state variable in your HTML elements. It automatically updates the element's content whenever the associated variable changes, providing real-time data display without any JavaScript.

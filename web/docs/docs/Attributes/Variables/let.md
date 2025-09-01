@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Letz
 
 The `letz` attribute is the cornerstone of Gen-Z.js state management, providing seamless two-way data binding between HTML elements and application state. It initializes variables and automatically synchronizes values between the DOM and your application's state.

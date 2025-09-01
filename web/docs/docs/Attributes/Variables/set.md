@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Setz
 
 The `setz` attribute updates state variables when an element is clicked. It can set static values or evaluate JavaScript expressions using existing state variables, making it perfect for dynamic updates and calculations.
