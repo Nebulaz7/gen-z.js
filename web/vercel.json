@@ -1,0 +1,20 @@
+{
+  "builds": [
+    {
+      "src": "app/package.json",
+      "use": "@vercel/next"
+    },
+    {
+      "src": "docs/package.json", 
+      "use": "@vercel/static-build",
+      "config": { 
+        "distDir": "build",
+        "framework": null
+      }
+    }
+  ],
+  "routes": [
+    { "src": "/docs/(.*)", "dest": "/docs/$1" },
+    { "src": "/(.*)", "dest": "/app/$1" }
+  ]
+}
