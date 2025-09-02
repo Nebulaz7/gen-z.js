@@ -200,7 +200,7 @@ const Navbar = () => {
           <ul className="flex flex-col gap-6 pl-6">
             <li className="gap-0">
               <Link
-                href="/"
+                href="/docs"
                 className="text-2xl text-black border-b-2 border-black hover:text-3xl  transition-colors"
               >
                 Docs
@@ -209,7 +209,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                href="/"
+                href="https://github.com/Nebulaz7/gen-z.js"
                 className="text-2xl text-black border-b-2 border-black hover:text-3xl  transition-colors"
               >
                 Github
