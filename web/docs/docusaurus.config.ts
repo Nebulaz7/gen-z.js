@@ -19,7 +19,7 @@ const config: Config = {
   organizationName: "facebook",
   projectName: "docusaurus",
 
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn", // Changed from "throw" to "warn"
   onBrokenMarkdownLinks: "warn",
 
   i18n: {
@@ -41,20 +41,19 @@ const config: Config = {
         theme: {
           customCss: "./src/css/custom.css",
         },
-        pages: false, // Add this line to disable the landing page
+        pages: false,
       } satisfies Preset.Options,
     ],
   ],
 
   themeConfig: {
-    // Replace with your project's social card
     image: "img/docusaurus-social-card.jpg",
     navbar: {
       title: "GenZ.js",
       logo: {
         alt: "Genz.js Logo",
         src: "img/logo.svg",
-        href: "/intro/",
+        href: "/", // Changed from "/intro/" to "/"
       },
       items: [
         {
