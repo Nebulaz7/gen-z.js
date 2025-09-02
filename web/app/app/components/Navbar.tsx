@@ -64,7 +64,12 @@ const Navbar = () => {
       } flex py-3 px-3 bg-[121212]/70 lg:bg-transparent m-0 lg:py-4 font-sm backdrop-blur-xl z-30`}
     >
       <nav className="flex justify-between items-center gap-5 w-full max-w-7xl px-2 md:px-6 h-[3.5rem] mx-auto">
-        <h1 className="font-md flex text-white text-2xl">
+        <h1
+          onClick={() => {
+            window.location.href = "/";
+          }}
+          className="font-md flex cursor-pointer text-white text-2xl"
+        >
           <Image
             src="/logo.svg"
             alt="GenZ Logo"
@@ -128,29 +133,6 @@ const Navbar = () => {
               className="bg-black text-white px-3 py-1 rounded-full text-sm"
             >
               {repoStars} ★
-            </Link>
-          </motion.button>
-        </div>
-
-        {/* Star button for mobile */}
-        <div className="md:hidden lg:hidden flex items-center gap-6">
-          <motion.button
-            className="bg-[#f2f2f2] text-lg text-black px-3 cursor-pointer py-1 rounded-full flex items-center gap-2 shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] transition duration-300"
-            whileHover="hover"
-            variants={{
-              hover: { scale: 0.9 },
-            }}
-            layout
-            onClick={() =>
-              (window.location.href = "https://github.com/Nebulaz7/gen-z.js")
-            }
-          >
-            <GithubIcon size={20} />
-            <Link
-              href="https://github.com/Nebulaz7/gen-z.js"
-              className="bg-black flex text-white px-2 py-1 rounded-full text-sm"
-            >
-              {repoStars} <span className="ml-0.5">★</span>
             </Link>
           </motion.button>
         </div>
@@ -227,6 +209,28 @@ const Navbar = () => {
             </li>
             <li></li>
           </ul>
+          {/* Star button for mobile */}
+          <div className="md:hidden lg:hidden flex items-center gap-6">
+            <motion.button
+              className="bg-black text-lg ml-3 text-[#f2f2f2] px-4 cursor-pointer py-2 rounded-full flex items-center gap-2 shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] transition duration-300"
+              whileHover="hover"
+              variants={{
+                hover: { scale: 0.9 },
+              }}
+              layout
+              onClick={() =>
+                (window.location.href = "https://github.com/Nebulaz7/gen-z.js")
+              }
+            >
+              <GithubIcon size={20} /> Star on github
+              <Link
+                href="https://github.com/Nebulaz7/gen-z.js"
+                className="bg-white flex text-black px-2 py-1 rounded-full text-sm"
+              >
+                {repoStars} <span className="ml-0.5">★</span>
+              </Link>
+            </motion.button>
+          </div>
         </div>
       </motion.div>
     </motion.header>

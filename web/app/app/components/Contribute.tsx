@@ -24,7 +24,12 @@ const Contribute = () => {
             Join our community and help make this project better, contribute
             code, documentation, or ideas to make to help this project grow.
           </p>
-          <button className="text-[#f2f2f2] cursor-pointer bg-[#000000] px-4 py-2 ml-3 mt-2 rounded-full shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] hover:scale-90 transition duration-300">
+          <button
+            onClick={() => {
+              window.location.href = "https://github.com/Nebulaz7/gen-z.js";
+            }}
+            className="text-[#f2f2f2] cursor-pointer bg-[#000000] px-4 py-2 ml-3 mt-2 rounded-full shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] hover:scale-90 transition duration-300"
+          >
             Open source
             <ExternalLink className="inline-block ml-1 mb-1" size={22} />
           </button>

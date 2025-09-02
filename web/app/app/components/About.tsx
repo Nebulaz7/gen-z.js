@@ -26,7 +26,12 @@ const About = () => {
             attributes ending with &quot;z&quot; to your HTML elements! Perfect
             for creating easy and simple project fast.
           </p>
-          <button className="text-[#f2f2f2] cursor-pointer bg-[#000000] px-4 py-2 ml-3 mt-2 rounded-full shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] hover:scale-90 transition duration-300">
+          <button
+            onClick={() => {
+              window.location.href = "/docs";
+            }}
+            className="text-[#f2f2f2] cursor-pointer bg-[#000000] px-4 py-2 ml-3 mt-2 rounded-full shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] hover:scale-90 transition duration-300"
+          >
             Try it out!
             <ArrowUpRight className="inline-block ml-1 mb-1" size={22} />
           </button>

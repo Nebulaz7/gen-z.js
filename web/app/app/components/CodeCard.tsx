@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { ArrowRight } from "lucide-react";
 
 // import type { Variants } from "framer-motion";
 
@@ -171,8 +172,13 @@ const CodeCard = () => {
                   /> */}
                 </code>
               </pre>
-              <button className="text-black cursor-pointer bg-[#f2f2f2] px-4 py-2 ml-3 mt-2 rounded-full shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] hover:scale-90 transition duration-300">
-                Get Started
+              <button
+                onClick={() => {
+                  window.location.href = "/docs";
+                }}
+                className="text-black cursor-pointer bg-[#f2f2f2] px-4 py-2 ml-3 mt-2 rounded-full shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] hover:scale-90 transition duration-300"
+              >
+                Get Started <ArrowRight className="inline-block ml-0.5 mb-1" />
               </button>
             </div>
           </div>
