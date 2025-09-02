@@ -31,7 +31,7 @@ const Footer = () => {
         <div className="flex flex-col sm:flex-row sm:text-center space-y-2 sm:space-y-0 sm:space-x-4">
           {/* Twitter/X */}
           <Link
-            href="https://github.com"
+            href="https://github.com/Nebulaz7/gen-z.js"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 items-center justify-center text-gray-200 hover:text-white transition-all duration-300"
@@ -40,7 +40,7 @@ const Footer = () => {
           </Link>
 
           <Link
-            href="/"
+            href="/docs"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 items-center justify-center text-gray-200 hover:text-white transition-all duration-300"

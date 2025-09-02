@@ -82,7 +82,7 @@ const Navbar = () => {
         <ul className="hidden md:flex gap-6 text-gray-300">
           <li>
             <MotionLink
-              href="/"
+              href="/docs"
               className="hover:text-white hover:bg-[#555555] px-3 py-1 hover:rounded-xl text-xl"
               layout
             >
@@ -91,7 +91,7 @@ const Navbar = () => {
           </li>
           <li>
             <MotionLink
-              href="/"
+              href="https://github.com/Nebulaz7/gen-z.js"
               className="hover:text-white hover:bg-[#555555] px-3 py-1 hover:rounded-xl text-xl"
               layout
             >
@@ -104,7 +104,7 @@ const Navbar = () => {
               className="hover:text-white hover:bg-[#555555] px-3 py-1 hover:rounded-xl text-xl"
               layout
             >
-              Blog
+              Showcase
             </MotionLink>
           </li>
         </ul>
