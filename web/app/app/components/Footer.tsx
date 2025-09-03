@@ -5,7 +5,7 @@ import Image from "next/image";
 const Footer = () => {
   return (
     <footer className="py-4 px-1 md:py-8 md:px-10 bg-black/40 backdrop-blur-xl border-t border-white/10">
-      <div className="container md:mx-auto flex flex-col sm:flex-row justify-between items-center">
+      <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
         {/* Important Links */}
         <div className="flex flex-row sm:flex-row sm:text-center space-x-4 sm:space-x-4 space-y-0 sm:space-y-0 order-1 sm:order-2 mb-4 sm:mb-0">
           <Link
@@ -50,7 +50,7 @@ const Footer = () => {
           </h1>
           <h1 className="mb-2 text-gray-200">
             A framework created with 💛 by{" "}
-            <a href="https://x.com/Nebulaz7" className="text-yellow-500">
+            <a href="https://x.com/joshpet77" className="text-yellow-500">
               Peters Joshua
             </a>
           </h1>
