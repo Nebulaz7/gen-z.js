@@ -10,17 +10,17 @@ const About = () => {
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
       transition={{ duration: 1 }}
-      className="relative w-[80vw] mx-auto my-5 rounded-4xl bg-gradient-to-b shadow-[4px_4px_0px_0px_#fafa10] from-gray-100 to-gray-200"
+      className="relative w-[95vw] md:w-[80vw] mx-auto my-5 rounded-4xl bg-gradient-to-b shadow-[4px_4px_0px_0px_#fafa10] from-gray-100 to-gray-200"
     >
-      <div className="relative flex flex-col items-center justify-center px-6 py-10">
+      <div className="relative flex flex-col items-center justify-center px-4 md:px-6 py-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Main heading */}
-          <h2 className="hero-font text-3xl md:text-4xl lg:text-6xl font-light leading-tight text-black mb-6">
-            Meet GenZ.js
+          <h2 className="hero-font text-3xl md:text-4xl lg:text-6xl leading-tight text-black mb-6">
+            Meet <span className="highlight-text">GenZ.js</span>
           </h2>
 
           {/* Description */}
-          <p className="text-lg md:text-xl text-black pb-4 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-md text-left md:text-center md:text-xl text-black pb-4 max-w-3xl mx-auto leading-relaxed">
             Genz.js is a mini JavaScript framework that lets you add
             interactivity to HTML without writing JavaScript code. Just add
             attributes ending with &quot;z&quot; to your HTML elements! Perfect

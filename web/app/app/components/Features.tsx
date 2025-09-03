@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { Zap, Braces, RefreshCw } from "lucide-react";
+import { Zap, Braces, BrainCircuit } from "lucide-react";
 
 const Features = () => {
   // const features = [
@@ -76,7 +76,7 @@ const Features = () => {
           {/* Left side: 2 small cards stacked */}
           <div className="flex flex-col gap-6 md:gap-8 order-2 lg:order-1">
             {/* Small card 1 */}
-            <div className="bg-black text-white shadow-[2px_2px_3px_1px_#71eaff]  hover:shadow-[3px_3px_4px_2px_#71eaff] rounded-xl p-4 md:p-6  transition-all duration-300 flex-1">
+            <div className="bg-black text-white shadow-[2px_2px_3px_2px_#71eaff]  hover:shadow-[3px_3px_4px_3px_#71eaff] rounded-xl p-4 md:p-6  transition-all duration-300 flex-1">
               <div className="mb-3 md:mb-4">
                 <Braces className="w-10 h-10 md:w-12 md:h-12 text-[#71eaff]" />
               </div>
@@ -90,7 +90,7 @@ const Features = () => {
             </div>
 
             {/* Small card 2 */}
-            <div className="bg-black text-white rounded-xl shadow-[2px_2px_3px_1px_#3cff52] hover:shadow-[3px_3px_4px_2px_#3cff52]  p-4 md:p-6  transition-all duration-300 flex-1">
+            <div className="bg-black text-white rounded-xl shadow-[2px_2px_3px_2px_#3cff52] hover:shadow-[3px_3px_4px_3px_#3cff52]  p-4 md:p-6  transition-all duration-300 flex-1">
               <div className="mb-3 md:mb-4">
                 <Zap className="w-10 h-10 md:w-12 md:h-12 text-[#3cff52]" />
               </div>
@@ -105,16 +105,16 @@ const Features = () => {
           </div>
 
           {/* Right side: 1 tall card */}
-          <div className="bg-black text-white shadow-[3px_3px_4px_2px_#fafa10] hover:shadow-[4px_4px_5px_3px_#fafa10] rounded-xl p-6 md:p-8  transition-all duration-300 flex flex-col justify-center order-1 lg:order-2 min-h-[300px] lg:min-h-0">
+          <div className="bg-black text-white shadow-[2px_2px_3px_2px_#fafa10] hover:shadow-[3px_3px_4px_3px_#fafa10] md:shadow-[3px_3px_4px_3px_#fafa10] md:hover:shadow-[4px_4px_5px_4px_#fafa10] rounded-xl p-6 md:p-8  transition-all duration-300 flex flex-col justify-center order-1 lg:order-2 min-h-[300px] lg:min-h-0">
             <div className="mb-4 md:mb-6">
-              <RefreshCw className="w-12 h-12 md:w-20 md:h-20 text-yellow-500" />
+              <BrainCircuit className="w-12 h-12 md:w-20 md:h-20 text-yellow-500" />
             </div>
             <h3 className="text-2xl md:text-3xl hero-font font-light mb-4 md:mb-6">
-              State Management on the Fly
+              Intuitive Syntax
             </h3>
             <p className="text-base md:text-lg leading-relaxed mb-4 md:mb-6">
-              Built-in state management with letz, getz, and setz attributes. No
-              complex setup or boilerplate code required.
+              All attributes end with 'z' for easy recognition. Simple and
+              memorable.
             </p>
             <div className="bg-gray-700/50 rounded-lg p-3 md:p-4 overflow-x-auto">
               <code className="text-xs md:text-sm  text-white whitespace-nowrap">

@@ -164,7 +164,7 @@ const Navbar = () => {
           y: isMenuOpen ? 0 : "-100%",
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="absolute top-0 left-0 w-full md:hidden min-h-[50vh] bg-transparent z-30 flex flex-col"
+        className="absolute py-2 top-0 left-0 w-full md:hidden min-h-[50vh] bg-transparent z-30 flex flex-col"
       >
         {/* Menu Header */}
         <div className="flex justify-between bg-transparent items-center p-3">
@@ -210,7 +210,7 @@ const Navbar = () => {
             <li></li>
           </ul>
           {/* Star button for mobile */}
-          <div className="md:hidden lg:hidden flex items-center gap-6">
+          <div className="md:hidden mb-2 lg:hidden flex items-center gap-6">
             <motion.button
               className="bg-black text-lg ml-3 text-[#f2f2f2] px-4 cursor-pointer py-2 rounded-full flex items-center gap-2 shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] transition duration-300"
               whileHover="hover"

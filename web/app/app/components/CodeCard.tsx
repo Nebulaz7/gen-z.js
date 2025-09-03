@@ -96,7 +96,7 @@ const CodeCard = () => {
           color: "#ffb86c",
         }, // orange for Gen-Z attributes
         {
-          text: '"https://cdn.jsdelivr.net/gh/Nebulaz7/gen-z.js@1.1.0/dist/gen-z.min.js"',
+          text: '"gen-z.min.js"',
           color: "#f1fa8c",
         },
         { text: ">", color: "#d1d5dc" },
@@ -135,19 +135,19 @@ const CodeCard = () => {
 
   return (
     <section id="features" aria-labelledby="features-label" className=" py-6">
-      <div className="min-w-[90vw] items-center px-5 justify-center">
+      <div className="min-w-[90vw] items-center md:px-5 justify-center">
         {/* Demo section */}
         <div className="w-full">
           <div className="relative">
-            <div className="absolute -inset-4 bg-gradient-to-r from-yellow-400/10 to-yellow-500/20 rounded-2xl blur-xl" />
-            <div className="relative border-0.5 border-[#fafa10] bg-gray-900 rounded-xl p-6 overflow-hidden">
+            <div className="absolute -inset-4 md:bg-gradient-to-r from-yellow-400/10 to-yellow-500/20 rounded-2xl blur-xl" />
+            <div className="relative border-1 border-black md:border-none bg-gray-900 rounded-xl p-4 md:p-6 overflow-hidden">
               <div className="flex items-center gap-2 mb-4">
                 <div className="w-3 h-3 bg-red-500 rounded-full" />
                 <div className="w-3 h-3 bg-yellow-500 rounded-full" />
                 <div className="w-3 h-3 bg-green-500 rounded-full" />
                 <span className="ml-4 text-gray-400 text-sm">index.html</span>
               </div>
-              <pre className="text-sm md:text-md text-gray-300 bg-gray-700/50 p-3 rounded-lg whitespace-pre-wrap break-words leading-relaxed min-h-[10rem]">
+              <pre className="text-sm md:text-md text-gray-300 bg-gray-700/50 md:p-3 p-2 rounded-lg whitespace-pre-wrap break-words leading-relaxed min-h-[10rem]">
                 <code>
                   {codeLines.map((line) => (
                     <div key={line.num}>

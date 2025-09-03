@@ -4,32 +4,10 @@ import Image from "next/image";
 
 const Footer = () => {
   return (
-    <footer className="py-8 px-10 bg-black/40 backdrop-blur-xl border-t border-white/10">
-      <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center">
-        {/* Copyright Text */}
-        <div className="text-gray-400 text-sm  mb-4 sm:mb-0">
-          <h1 className="font-md flex text-center text-white text-xl mb-4">
-            <Image
-              src="/logo.svg"
-              alt="GenZ Logo"
-              width={40}
-              height={30}
-              className="object-contain"
-            />
-            GenZ.js
-          </h1>
-          <h1 className="mb-2 text-gray-200">
-            A framework created with 💛 by{" "}
-            <a href="https://x.com/Nebulaz7" className="text-yellow-500">
-              Peters Joshua
-            </a>
-          </h1>
-          © 2025 GenZ.js
-        </div>
-
-        {/* Social Media Icons */}
-        <div className="flex flex-col sm:flex-row sm:text-center space-y-2 sm:space-y-0 sm:space-x-4">
-          {/* Twitter/X */}
+    <footer className="py-4 px-1 md:py-8 md:px-10 bg-black/40 backdrop-blur-xl border-t border-white/10">
+      <div className="container md:mx-auto flex flex-col sm:flex-row justify-between items-center">
+        {/* Important Links */}
+        <div className="flex flex-row sm:flex-row sm:text-center space-x-4 sm:space-x-4 space-y-0 sm:space-y-0 order-1 sm:order-2 mb-4 sm:mb-0">
           <Link
             href="https://github.com/Nebulaz7/gen-z.js"
             target="_blank"
@@ -56,6 +34,27 @@ const Footer = () => {
           >
             Examples
           </Link>
+        </div>
+
+        {/* Copyright Text */}
+        <div className="text-gray-400 text-sm order-2 sm:order-1">
+          <h1 className="font-md flex text-left md:text-center text-white text-xl mb-4">
+            <Image
+              src="/logo.svg"
+              alt="GenZ Logo"
+              width={40}
+              height={30}
+              className="object-contain"
+            />
+            GenZ.js
+          </h1>
+          <h1 className="mb-2 text-gray-200">
+            A framework created with 💛 by{" "}
+            <a href="https://x.com/Nebulaz7" className="text-yellow-500">
+              Peters Joshua
+            </a>
+          </h1>
+          © 2025 GenZ.js
         </div>
       </div>
     </footer>
