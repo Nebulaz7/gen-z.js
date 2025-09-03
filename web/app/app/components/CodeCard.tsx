@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { ArrowRight } from "lucide-react";
 
 // import type { Variants } from "framer-motion";

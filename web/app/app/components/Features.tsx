@@ -113,8 +113,8 @@ const Features = () => {
               Intuitive Syntax
             </h3>
             <p className="text-base md:text-lg leading-relaxed mb-4 md:mb-6">
-              All attributes end with 'z' for easy recognition. Simple and
-              memorable.
+              All attributes end with &apos;z&apos; for easy recognition. Simple
+              and memorable.
             </p>
             <div className="bg-gray-700/50 rounded-lg p-3 md:p-4 overflow-x-auto">
               <code className="text-xs md:text-sm  text-white whitespace-nowrap">
