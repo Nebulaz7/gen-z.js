@@ -1,44 +1,38 @@
+// test-client.mjs
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { SSEClientTransport } from "@modelcontextprotocol/sdk/client/sse.js";
 
-const SERVER_URL = "https://genz-js-mcp.vercel.app/api/sse";
+const SERVER_URL = "http://localhost:3000/api/sse"; // use http:// not https:// if running locally
 
 async function testMcpClient() {
   console.log(`Attempting to connect to: ${SERVER_URL}`);
 
   const transport = new SSEClientTransport(new URL(SERVER_URL));
   const client = new Client(
-    {
-      name: "test-client",
-      version: "1.0.0",
-    },
-    {
-      capabilities: {},
-    }
+    { name: "test-client", version: "1.0.0" },
+    { capabilities: {} }
   );
 
   try {
     console.log("Connecting...");
     await client.connect(transport);
 
-    console.log(
-      "✅ Connected! Server capabilities:",
-      client.getServerCapabilities()
-    );
+    console.log("✅ Connected!");
+    console.log("🔧 Server capabilities:", client.getServerCapabilities());
 
-    // List available tools
+    // List tools
     const toolsResult = await client.listTools();
     const toolNames = toolsResult.tools?.map((tool) => tool.name) || [];
     console.log("📖 Available tools:", toolNames);
 
-    // List available resources
+    // List resources
     const resourcesResult = await client.listResources();
     const resourceNames =
       resourcesResult.resources?.map((resource) => resource.name) || [];
     console.log("📚 Available resources:", resourceNames);
 
-    // Test generate_genz_example tool with proper parameters
-    console.log("\n🧪 Testing generate_genz_example tool...");
+    // --- Test generate_genz_example tool ---
+    console.log("\n🧪 Testing generate_genz_example...");
     try {
       const toolResult = await client.callTool({
         name: "generate_genz_example",
@@ -48,48 +42,49 @@ async function testMcpClient() {
         },
       });
       console.log(
-        "✅ Tool result preview:",
+        "✅ Example tool result:",
         toolResult.content[0].text.substring(0, 200) + "..."
       );
-    } catch (error) {
-      console.error("❌ Tool test failed:", error.message);
+    } catch (err) {
+      console.error("❌ generate_genz_example failed:", err.message);
     }
 
-    // Test validate_genz_code tool
-    console.log("\n🧪 Testing validate_genz_code tool...");
+    // --- Test validate_genz_code tool ---
+    console.log("\n🧪 Testing validate_genz_code...");
     try {
       const validateResult = await client.callTool({
         name: "validate_genz_code",
         arguments: {
-          html: '<script src="https://cdn.jsdelivr.net/gh/Nebulaz7/gen-z.js@1.1.0/dist/gen-z.min.js"></script><button alertz="Hello">Click me</button>',
+          html: '<div z-if="true">Hello GenZ</div>',
         },
       });
       console.log(
-        "✅ Validation result preview:",
-        validateResult.content[0].text.substring(0, 300) + "..."
+        "✅ Validation result:",
+        validateResult.content.map((c) => c.text).join("\n")
       );
-    } catch (error) {
-      console.error("❌ Validation test failed:", error.message);
+    } catch (err) {
+      console.error("❌ validate_genz_code failed:", err.message);
     }
 
-    // Test docs-list resource
+    // --- Test docs-list resource ---
     console.log("\n🧪 Testing docs-list resource...");
     try {
       const docsResult = await client.readResource({
         uri: "genz-docs://docs/list",
       });
+
       console.log(
-        "✅ Docs list result preview:",
-        docsResult.contents[0].text.substring(0, 200) + "..."
+        "✅ Docs list result:",
+        docsResult.content[0].text.substring(0, 200) + "..."
       );
-    } catch (error) {
-      console.error("❌ Docs list test failed:", error.message);
+    } catch (err) {
+      console.error("❌ docs-list resource failed:", err.message);
     }
 
-    console.log("\n🎉 All tests completed successfully!");
-  } catch (error) {
-    console.error("❌ Connection failed:", error.message);
-    console.error("Full error:", error);
+    console.log("\n🎉 All tests completed!");
+  } catch (err) {
+    console.error("❌ Connection failed:", err.message);
+    console.error(err);
   } finally {
     await client.close();
   }

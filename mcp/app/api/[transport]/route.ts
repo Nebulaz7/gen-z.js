@@ -1,4 +1,4 @@
-// mcp/app/api/[transport]/route.ts
+// app/api/[transport]/route.ts
 import { createMcpHandler } from "mcp-handler";
 import { ResourceTemplate } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { z } from "zod";
@@ -6,14 +6,13 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
+// ---------------- Helpers ----------------
+
 // Helper function to get all markdown files
 function getAllMarkdownFiles(dir: string, prefix = ""): string[] {
   const files: string[] = [];
   try {
-    if (!fs.existsSync(dir)) {
-      return files;
-    }
-
+    if (!fs.existsSync(dir)) return files;
     const items = fs.readdirSync(dir);
 
     for (const item of items) {
@@ -29,7 +28,6 @@ function getAllMarkdownFiles(dir: string, prefix = ""): string[] {
   } catch (error) {
     console.error("Error reading directory:", error);
   }
-
   return files;
 }
 
@@ -39,99 +37,114 @@ function findDocsDirectory(): string {
     path.resolve(process.cwd(), "../web/docs/docs"),
     path.resolve(process.cwd(), "../../web/docs/docs"),
   ];
-
   for (const possiblePath of possiblePaths) {
-    if (fs.existsSync(possiblePath)) {
-      return possiblePath;
-    }
+    if (fs.existsSync(possiblePath)) return possiblePath;
   }
-
   return "";
 }
 
+// ---------------- MCP Handler ----------------
+
 const handler = createMcpHandler(
   (server) => {
-    // Add resource for listing all documentation files
+    // --- Resource: Docs List ---
     server.resource(
       "docs-list",
-      "genz-docs://docs/list",
+      "genz://docs/list",
       {
         title: "GenZ.js Documentation List",
         description: "List of all GenZ.js documentation files",
       },
       async () => {
-        const docsPath = findDocsDirectory();
-        if (!docsPath) {
-          return {
-            contents: [
-              {
-                uri: "genz-docs://docs/list",
-                mimeType: "application/json",
-                text: JSON.stringify({
-                  files: [],
-                  message: "Documentation not found in deployment",
-                }),
-              },
-            ],
-          };
-        }
+        const availableDocs = [
+          {
+            uri: "genz://docs/getting-started",
+            name: "GenZ.js - Getting Started",
+            description: "Introduction and setup guide for GenZ.js",
+          },
+          {
+            uri: "genz://docs/attributes",
+            name: "GenZ.js - Attributes",
+            description: "Complete reference for GenZ.js attributes",
+          },
+          {
+            uri: "genz://docs/examples",
+            name: "GenZ.js - Examples",
+            description: "Practical examples and use cases",
+          },
+        ];
 
-        const files = getAllMarkdownFiles(docsPath);
         return {
           contents: [
             {
-              uri: "genz-docs://docs/list",
+              uri: "genz://docs/list",
               mimeType: "application/json",
-              text: JSON.stringify({
-                files: files.map((file) => ({
-                  uri: `genz-docs://docs/${file}`,
-                  name: `GenZ.js - ${file.replace(/\//g, " > ")}`,
-                  description: `GenZ.js documentation for ${file}`,
-                })),
-              }),
+              text: JSON.stringify({ files: availableDocs }),
             },
           ],
         };
       }
     );
 
-    // Add resource template for individual documentation files
+    // --- Resource: Docs File ---
     server.resource(
       "docs-file",
-      new ResourceTemplate("genz-docs://docs/{docPath}", { list: undefined }),
+      new ResourceTemplate("genz://docs/{docPath}", { list: undefined }),
       {
         title: "GenZ.js Documentation File",
         description: "Individual GenZ.js documentation files",
       },
-      async (uri, { docPath }) => {
-        const docsPath = findDocsDirectory();
+      async (uri, variables) => {
+        const docPath = Array.isArray(variables.docPath)
+          ? variables.docPath[0]
+          : variables.docPath;
 
-        if (!docsPath) {
-          throw new Error(`Documentation directory not found`);
+        if (typeof docPath !== "string") {
+          throw new Error("Invalid docPath parameter");
         }
-
-        const filePath = path.join(docsPath, `${docPath}.md`);
-
-        if (!fs.existsSync(filePath)) {
-          throw new Error(`Documentation file not found: ${docPath}`);
-        }
-
-        const content = fs.readFileSync(filePath, "utf8");
-        const { data, content: markdown } = matter(content);
-
-        return {
-          contents: [
-            {
-              uri: uri.toString(),
-              mimeType: "text/markdown",
-              text: `---\ntitle: ${data.title || docPath}\n---\n\n${markdown}`,
-            },
-          ],
+        const docUrls: Record<string, string> = {
+          "getting-started": "https://genz-js.vercel.app/docs/getting-started",
+          attributes: "https://genz-js.vercel.app/docs/attributes",
+          examples: "https://genz-js.vercel.app/docs/examples",
         };
+
+        if (!(docPath in docUrls)) {
+          throw new Error(
+            `Unknown documentation path: ${docPath}. Available paths: ${Object.keys(
+              docUrls
+            ).join(", ")}`
+          );
+        }
+        try {
+          const response = await fetch(docUrls[docPath]);
+          if (!response.ok) {
+            throw new Error(
+              `Failed to fetch documentation: ${response.status} ${response.statusText}`
+            );
+          }
+
+          const html = await response.text();
+
+          return {
+            contents: [
+              {
+                uri: uri.toString(),
+                mimeType: "text/html",
+                text: html,
+              },
+            ],
+          };
+        } catch (error) {
+          throw new Error(
+            `Error fetching documentation for ${docPath}: ${
+              error instanceof Error ? error.message : String(error)
+            }`
+          );
+        }
       }
     );
 
-    // Add tool: Generate GenZ.js examples
+    // --- Tool: Generate GenZ.js examples ---
     server.tool(
       "generate_genz_example",
       "Generate GenZ.js framework code examples",
@@ -238,7 +251,7 @@ const handler = createMcpHandler(
       }
     );
 
-    // Add tool: Validate GenZ.js code
+    // --- Tool: Validate GenZ.js code ---
     server.tool(
       "validate_genz_code",
       "Validate GenZ.js HTML code for correct attribute usage",
@@ -251,14 +264,12 @@ const handler = createMcpHandler(
         const issues: string[] = [];
         const suggestions: string[] = [];
 
-        // Check for GenZ.js script inclusion
         if (!html.includes("gen-z")) {
           issues.push(
             '⚠️ GenZ.js script not found. Add: <script src="https://cdn.jsdelivr.net/gh/Nebulaz7/gen-z.js@1.1.0/dist/gen-z.min.js"></script>'
           );
         }
 
-        // Check for proper attribute usage
         const genZAttributes = [
           "alertz",
           "letz",
@@ -279,7 +290,6 @@ const handler = createMcpHandler(
           }
         });
 
-        // Check for common issues
         if (html.includes("getz") && !html.includes("letz")) {
           issues.push(
             "⚠️ Found getz without letz. Make sure to create variables with letz first."
@@ -318,12 +328,8 @@ ${
   {
     capabilities: {
       resources: {
-        "docs-list": {
-          description: "List of all GenZ.js documentation files",
-        },
-        "docs-file": {
-          description: "Individual GenZ.js documentation files",
-        },
+        "docs-list": { description: "List of all GenZ.js documentation files" },
+        "docs-file": { description: "Individual GenZ.js documentation files" },
       },
       tools: {
         generate_genz_example: {
@@ -337,10 +343,12 @@ ${
   },
   {
     redisUrl: process.env.REDIS_URL,
-    basePath: "/api",
+    basePath: "/api", // mounts endpoints under /api/{transport}
     maxDuration: 60,
     verboseLogs: true,
   }
 );
 
-export { handler as GET, handler as POST };
+// Export GET + POST to support both SSE and HTTP transports
+export const GET = handler;
+export const POST = handler;
