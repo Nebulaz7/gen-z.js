@@ -83,7 +83,7 @@ server.setRequestHandler(ReadResourceRequestSchema, async (request) => {
         },
       ],
     };
-  } catch (error) {
+  } catch {
     throw new McpError(
       ErrorCode.InternalError,
       `Documentation file not found: ${docPath}`
@@ -320,9 +320,9 @@ ${
 // API route handlers
 export async function GET(
   request: Request,
-  { params }: { params: { transport: string } }
+  { params }: { params: Promise<{ transport: string }> }
 ) {
-  const { transport } = params;
+  const { transport } = await params;
 
   return new Response(
     JSON.stringify({
@@ -340,9 +340,9 @@ export async function GET(
 
 export async function POST(
   request: Request,
-  { params }: { params: { transport: string } }
+  { params }: { params: Promise<{ transport: string }> }
 ) {
-  const { transport } = params;
+  const { transport } = await params;
 
   if (transport !== "http") {
     return new Response("Only HTTP transport supported", { status: 400 });
@@ -407,7 +407,7 @@ async function handleListResources() {
   };
 }
 
-async function handleReadResource(body: any) {
+async function handleReadResource(body: { params: { uri: string } }) {
   const uri = body.params.uri;
   const docPath = uri.replace("genz-docs://docs/", "");
   const filePath = path.resolve(process.cwd(), "../docs/docs", `${docPath}.md`);
@@ -425,7 +425,7 @@ async function handleReadResource(body: any) {
         },
       ],
     };
-  } catch (error) {
+  } catch {
     throw new McpError(
       ErrorCode.InternalError,
       `Documentation file not found: ${docPath}`
@@ -478,7 +478,9 @@ async function handleListTools() {
   };
 }
 
-async function handleCallTool(body: any) {
+async function handleCallTool(body: {
+  params: { name: string; arguments: Record<string, unknown> };
+}) {
   const { name, arguments: args } = body.params;
 
   switch (name) {
