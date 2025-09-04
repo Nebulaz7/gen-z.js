@@ -14,16 +14,8 @@
   ],
   "routes": [
     {
-      "src": "/docs",
-      "dest": "/docs/"
-    },
-    {
       "src": "/docs/(.*)",
       "dest": "/docs/$1"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/app/$1"
     }
   ]
 }
