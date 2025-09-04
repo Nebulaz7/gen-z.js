@@ -337,9 +337,10 @@ ${
   },
   {
     redisUrl: process.env.REDIS_URL,
-    maxDuration: 300, // Increased from 60 to 300 seconds for production
+    basePath: "/api",
+    maxDuration: 60,
     verboseLogs: true,
   }
 );
 
-export { handler as GET, handler as POST, handler as OPTIONS };
+export { handler as GET, handler as POST };
