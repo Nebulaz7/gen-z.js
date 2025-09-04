@@ -1,7 +1,7 @@
 import { Client } from "@modelcontextprotocol/sdk/client/index.js";
 import { SSEClientTransport } from "@modelcontextprotocol/sdk/client/sse.js";
 
-const SERVER_URL = "http://localhost:3000/api/sse";
+const SERVER_URL = "https://genz-js-mcp.vercel.app/api/sse";
 
 async function testMcpClient() {
   console.log(`Attempting to connect to: ${SERVER_URL}`);
