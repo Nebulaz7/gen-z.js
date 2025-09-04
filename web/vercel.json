@@ -18,10 +18,6 @@
       "dest": "/docs/$1"
     },
     {
-      "src": "/api/(.*)",
-      "dest": "/app/api/$1"
-    },
-    {
       "src": "/(.*)",
       "dest": "/app/$1"
     }
