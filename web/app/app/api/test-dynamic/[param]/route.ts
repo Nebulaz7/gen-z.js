@@ -3,7 +3,7 @@ export async function GET(
   { params }: { params: Promise<{ param: string }> }
 ) {
   const { param } = await params;
-  
+
   return new Response(
     JSON.stringify({
       message: "Dynamic route test is working!",
