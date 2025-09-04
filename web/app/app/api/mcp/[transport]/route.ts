@@ -394,8 +394,43 @@ export async function POST(
 
 // Extract your handler logic into separate functions
 async function handleListResources() {
-  const docsPath = path.resolve(process.cwd(), "../docs/docs");
-  const files = getAllMarkdownFiles(docsPath);
+  // Try multiple possible paths for the docs directory
+  const possiblePaths = [
+    path.resolve(process.cwd(), "../docs/docs"),
+    path.resolve(process.cwd(), "../../docs/docs"),
+    path.resolve(process.cwd(), "../../../docs/docs"),
+    path.resolve(process.cwd(), "docs/docs"),
+  ];
+
+  let docsPath = "";
+  let files: string[] = [];
+
+  for (const possiblePath of possiblePaths) {
+    try {
+      if (fs.existsSync(possiblePath)) {
+        docsPath = possiblePath;
+        files = getAllMarkdownFiles(docsPath);
+        break;
+      }
+    } catch (error) {
+      console.error(`Error checking path ${possiblePath}:`, error);
+    }
+  }
+
+  // If no docs found, return empty resources
+  if (files.length === 0) {
+    console.warn("No documentation files found in any of the expected paths");
+    return {
+      resources: [
+        {
+          uri: "genz-docs://docs/placeholder",
+          name: "GenZ.js - Documentation (Loading...)",
+          mimeType: "text/markdown",
+          description: "GenZ.js documentation is being loaded",
+        },
+      ],
+    };
+  }
 
   return {
     resources: files.map((file) => ({
@@ -410,27 +445,40 @@ async function handleListResources() {
 async function handleReadResource(body: { params: { uri: string } }) {
   const uri = body.params.uri;
   const docPath = uri.replace("genz-docs://docs/", "");
-  const filePath = path.resolve(process.cwd(), "../docs/docs", `${docPath}.md`);
 
-  try {
-    const content = fs.readFileSync(filePath, "utf8");
-    const { data, content: markdown } = matter(content);
+  // Try multiple possible paths for the docs directory
+  const possiblePaths = [
+    path.resolve(process.cwd(), "../docs/docs", `${docPath}.md`),
+    path.resolve(process.cwd(), "../../docs/docs", `${docPath}.md`),
+    path.resolve(process.cwd(), "../../../docs/docs", `${docPath}.md`),
+    path.resolve(process.cwd(), "docs/docs", `${docPath}.md`),
+  ];
 
-    return {
-      contents: [
-        {
-          uri,
-          mimeType: "text/markdown",
-          text: `---\ntitle: ${data.title || docPath}\n---\n\n${markdown}`,
-        },
-      ],
-    };
-  } catch {
-    throw new McpError(
-      ErrorCode.InternalError,
-      `Documentation file not found: ${docPath}`
-    );
+  for (const filePath of possiblePaths) {
+    try {
+      if (fs.existsSync(filePath)) {
+        const content = fs.readFileSync(filePath, "utf8");
+        const { data, content: markdown } = matter(content);
+
+        return {
+          contents: [
+            {
+              uri,
+              mimeType: "text/markdown",
+              text: `---\ntitle: ${data.title || docPath}\n---\n\n${markdown}`,
+            },
+          ],
+        };
+      }
+    } catch (error) {
+      console.error(`Error reading file ${filePath}:`, error);
+    }
   }
+
+  throw new McpError(
+    ErrorCode.InternalError,
+    `Documentation file not found: ${docPath}`
+  );
 }
 
 async function handleListTools() {

@@ -14,6 +14,7 @@
     }
   ],
   "routes": [
+    { "src": "/api/(.*)", "dest": "/app/api/$1" },
     { "src": "/docs/(.*)", "dest": "/docs/$1" },
     { "src": "/(.*)", "dest": "/app/$1" }
   ]
