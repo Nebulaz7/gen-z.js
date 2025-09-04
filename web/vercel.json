@@ -1,12 +1,8 @@
 {
-  "version": 2,
   "builds": [
     {
       "src": "app/package.json",
-      "use": "@vercel/next",
-      "config": {
-        "zeroConfig": true
-      }
+      "use": "@vercel/next"
     },
     {
       "src": "docs/package.json", 
@@ -17,6 +13,10 @@
     }
   ],
   "routes": [
+    {
+      "src": "/docs",
+      "dest": "/docs/"
+    },
     {
       "src": "/docs/(.*)",
       "dest": "/docs/$1"
