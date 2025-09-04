@@ -16,6 +16,13 @@
     {
       "src": "/docs/(.*)",
       "dest": "/docs/$1"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/app/$1"
     }
   ]
 }
