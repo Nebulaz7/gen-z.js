@@ -378,7 +378,7 @@ Want to add more "z" attributes? The framework is designed to be easily extensib
 
 ## 📄 License
 
-Free to use and modify. Built with ❤️ for the Gen-Z developers who want HTML-first interactivity!
+Free to use and modify. Built with ❤️ for the Gen-Z developers who want HTML-first interactivity!!
 
 ---
 
