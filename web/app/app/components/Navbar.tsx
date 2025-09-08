@@ -105,11 +105,11 @@ const Navbar = () => {
           </li>
           <li>
             <MotionLink
-              href="/"
+              href="/examples"
               className="hover:text-white hover:bg-[#555555] px-3 py-1 hover:rounded-xl text-xl"
               layout
             >
-              Showcase
+              Examples
             </MotionLink>
           </li>
         </ul>
