@@ -2,7 +2,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { X, ArrowUpRight, Rss, File, GithubIcon } from "lucide-react";
+import { X, ArrowUpRight, FileCode2, FileText, GithubIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
@@ -186,13 +186,13 @@ const Navbar = () => {
                 className="text-2xl text-black border-b-2 border-black hover:text-3xl  transition-colors"
               >
                 Docs
-                <File className="inline-block ml-0.5" size={24} />
+                <FileText className="inline-block ml-0.5" size={24} />
               </Link>
             </li>
             <li>
               <Link
                 href="https://github.com/Nebulaz7/gen-z.js"
-                className="text-2xl text-black border-b-2 border-black hover:text-3xl  transition-colors"
+                className="text-2xl text-black border-b-2 border-black hover:text-3xl transition-colors"
               >
                 Github
                 <ArrowUpRight className="inline-block ml-0.5" size={24} />
@@ -203,8 +203,8 @@ const Navbar = () => {
                 href="/"
                 className="text-2xl text-black border-b-2 border-black hover:text-3xl  transition-colors"
               >
-                Blog
-                <Rss className="inline-block ml-0.5" size={24} />
+                Examples
+                <FileCode2 className="inline-block ml-0.5" size={24} />
               </Link>
             </li>
             <li></li>
