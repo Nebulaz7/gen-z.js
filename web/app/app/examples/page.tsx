@@ -33,10 +33,10 @@ const page = () => {
               className="w-full h-48 object-cover rounded-lg mb-4 border-1 border-black"
             />
             <h2 className="text-2xl font-semibold mb-4 text-black">
-              Example Project 1
+              Counter App
             </h2>
             <p className="text-black mb-7">
-              A brief description of Example Project 1 built with gen-z.js.
+              A simple counter application built with gen-z.js.
             </p>
             <button
               onClick={() => {
