@@ -200,7 +200,7 @@ const Navbar = () => {
             </li>
             <li>
               <Link
-                href="/"
+                href="/examples"
                 className="text-2xl text-black border-b-2 border-black hover:text-3xl  transition-colors"
               >
                 Examples

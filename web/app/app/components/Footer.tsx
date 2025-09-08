@@ -27,7 +27,7 @@ const Footer = () => {
           </Link>
 
           <Link
-            href="/"
+            href="/examples"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 items-center justify-center text-gray-200 hover:text-white  transition-all duration-300"
