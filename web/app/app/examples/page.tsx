@@ -2,6 +2,7 @@
 import React from "react";
 import Image from "next/image";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 import GrainOverlay from "../Animations/GrainOverlay";
 import "../globals.css";
 import { ArrowUpRight } from "lucide-react";
@@ -50,6 +51,7 @@ const page = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
