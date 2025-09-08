@@ -24,7 +24,7 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const [repoStars, setRepoStars] = useState(0);
+  const [repoStars, setRepoStars] = useState("..");
 
   const getRepoStars = async () => {
     const url = "https://api.github.com/repos/Nebulaz7/gen-z.js";
