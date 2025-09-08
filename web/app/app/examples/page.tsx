@@ -1,7 +1,10 @@
+"use client";
 import React from "react";
+import Image from "next/image";
 import Navbar from "../components/Navbar";
 import GrainOverlay from "../Animations/GrainOverlay";
 import "../globals.css";
+import { ArrowUpRight } from "lucide-react";
 
 const page = () => {
   return (
@@ -20,21 +23,30 @@ const page = () => {
         {/* Project containers */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {/* Example Project 1 */}
-          <div className="bg-white bg-opacity-10 backdrop-blur-lg rounded-xl p-6 shadow-lg hover:shadow-2xl transition-shadow">
-            <h2 className="text-2xl font-semibold mb-4 text-white">
+          <div className="backdrop-blur-lg rounded-xl pt-2 p-6 bg-gradient-to-b shadow-[4px_4px_0px_0px_#fafa10] from-gray-100 to-gray-200">
+            <Image
+              src="/counter-img.png"
+              alt="Example Project 1"
+              width={400}
+              height={200}
+              className="w-full h-48 object-cover rounded-lg mb-4 border-1 border-black"
+            />
+            <h2 className="text-2xl font-semibold mb-4 text-black">
               Example Project 1
             </h2>
-            <p className="text-gray-300 mb-4">
+            <p className="text-black mb-7">
               A brief description of Example Project 1 built with gen-z.js.
             </p>
-            <a
-              href="#"
-              className="text-blue-400 hover:underline"
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={() => {
+                window.location.href =
+                  "https://codepen.io/Nebulaz7/pen/bNVZGqb";
+              }}
+              className="text-[#f2f2f2] cursor-pointer bg-[#000000] px-4 py-2 rounded-full shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] hover:scale-90 transition duration-300"
             >
-              View Project
-            </a>
+              View Project{" "}
+              <ArrowUpRight className="inline-block ml-1 mb-1" size={22} />
+            </button>
           </div>
         </div>
       </div>
