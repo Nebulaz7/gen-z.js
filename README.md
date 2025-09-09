@@ -44,7 +44,7 @@ With GenZ.js, you just write:
 
 ## 📄 Documentation
 
-You can view the documentation in the official site [docs](https://genz.js.vercel.app/docs)
+You can view the documentation in the official site [docs](https://genz-js.vercel.app/docs)
 
 ## 🤝 Contributing
 
