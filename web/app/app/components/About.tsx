@@ -21,10 +21,10 @@ const About = () => {
 
           {/* Description */}
           <p className="text-md text-left md:text-center md:text-xl text-black pb-4 max-w-3xl mx-auto leading-relaxed">
-            Genz.js is a mini JavaScript framework that lets you add
-            interactivity to HTML without writing JavaScript code. Just add
-            attributes ending with &quot;z&quot; to your HTML elements! Perfect
-            for creating easy and simple project fast.
+            Genz.js is a JavaScript library that lets you add interactivity to
+            HTML without writing JavaScript code. Just add attributes ending
+            with &quot;z&quot; to your HTML elements! Perfect for creating easy
+            and simple project fast.
           </p>
           <button
             onClick={() => {
