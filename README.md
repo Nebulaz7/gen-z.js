@@ -1,4 +1,4 @@
-# 🔥 GenZ.js - HTML-First Interactivity Framework
+# ![GenZ.js Logo](https://raw.githubusercontent.com/Nebulaz7/gen-z.js/main/web/docs/static/img/logo.svg) GenZ.js - HTML-First Interactivity Framework
 
 A JavaScript library that lets you add interactivity to HTML without writing JavaScript code. Just add attributes ending with "z" to your HTML elements!
 
