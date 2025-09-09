@@ -66,6 +66,11 @@ const config: Config = {
           label: "GitHub",
           position: "right",
         },
+        {
+          href: "https://genz-js.vercel.app/examples",
+          label: "Examples",
+          position: "right",
+        },
       ],
     },
     prism: {
