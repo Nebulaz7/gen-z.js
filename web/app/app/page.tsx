@@ -5,6 +5,7 @@ import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Contribute from "./components/Contribute";
 import Footer from "./components/Footer";
+import { Analytics } from "@vercel/analytics/next";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
       <Features />
       <Contribute />
       <Footer />
+      <Analytics />
     </div>
   );
 }
