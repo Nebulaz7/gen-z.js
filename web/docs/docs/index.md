@@ -7,7 +7,7 @@ sidebar_position: 1
 
 ## What is Gen-Z.js?
 
-Gen-Z.js is a revolutionary mini JavaScript framework designed for the modern web developer who values simplicity and speed. It empowers you to build interactive web applications using nothing but HTML attributes – no JavaScript knowledge required.
+Gen-Z.js is a revolutionary JavaScript library designed for the modern web developer who values simplicity and speed. It empowers you to build interactive web applications using nothing but HTML attributes – no JavaScript knowledge required.
 
 ## The Problem We Solve
 
