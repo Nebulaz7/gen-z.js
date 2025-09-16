@@ -57,6 +57,8 @@ const handler = createMcpHandler(
         };
       }
     );
+
+    // validate genz.js code tool goes here
   },
   {
     capabilities: {
@@ -64,7 +66,9 @@ const handler = createMcpHandler(
         hello: { description: "Simple hello world resource" },
       },
       tools: {
-        generate_html: { description: "Generate simple HTML with GenZ.js" },
+        generate_html: {
+          description: "Generate simple HTML boilerplate with GenZ.js",
+        },
       },
     },
   },
