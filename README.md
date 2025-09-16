@@ -37,7 +37,7 @@ With GenZ.js, you just write:
   </head>
   <body>
     <button alertz="Hello World!">Click me</button>
-    <script src="https://cdn.jsdelivr.net/gh/Nebulaz7/gen-z.js@0.0.1/dist/gen-z-v.0.0.1.js"></script>
+   <script src="https://cdn.jsdelivr.net/gh/Nebulaz7/gen-z.js@1.1.0/dist/gen-z.min.js"></script>
   </body>
 </html>
 ```
