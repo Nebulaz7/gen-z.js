@@ -1,0 +1,20 @@
+{
+  "name": "create-genz-app",
+  "version": "1.0.1",
+  "description": "Scaffold a GenZ.js app project",
+  "bin": {
+    "create-genz-app": "./bin/cli.js"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "keywords": [
+    "cli",
+    "genz",
+    "scaffold",
+    "boilerplate"
+  ],
+  "author": "Peters Joshua",
+  "license": "MIT"
+}
