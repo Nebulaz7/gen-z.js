@@ -1,6 +1,6 @@
 ---
 title: Selectors
-sidebar_position: 1.2
+sidebar_position: 1.3
 ---
 
 # Selectors
