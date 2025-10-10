@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import { X, ArrowUpRight, FileCode2, FileText, GithubIcon } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import Banner from "./Banner";
 
 const MotionLink = motion(Link);
 
@@ -20,11 +21,13 @@ const DoubleLineIcon = ({ size = 30, className = "" }) => (
     <rect x="4" y="19" width="24" height="2" rx="1" fill="currentColor" />
   </svg>
 );
+
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
   const [repoStars, setRepoStars] = useState("..");
+  const [isBannerVisible, setIsBannerVisible] = useState(true);
 
   const getRepoStars = async () => {
     const url = "https://api.github.com/repos/Nebulaz7/gen-z.js";
@@ -54,165 +57,74 @@ const Navbar = () => {
   }, [lastScrollY]);
 
   return (
-    <motion.header
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      viewport={{ once: true }}
-      className={`fixed top-0 left-0 right-0 transition-transform duration-300 ${
-        isVisible ? "translate-y-0" : "-translate-y-full py-2 px-2"
-      } flex py-3 px-3 bg-[121212]/70 lg:bg-transparent m-0 lg:py-4 font-sm backdrop-blur-xl z-30`}
-    >
-      <nav className="flex justify-between items-center gap-5 w-full max-w-7xl px-2 md:px-6 h-[3.5rem] mx-auto">
-        <h1
-          onClick={() => {
-            window.location.href = "/";
-          }}
-          className="font-md flex cursor-pointer text-white text-2xl"
-        >
-          <Image
-            src="/logo.svg"
-            alt="GenZ Logo"
-            width={40}
-            height={30}
-            className="object-contain rounded-full"
-          />
-          GenZ.js{" "}
-          <span className="text-xs bg-secondary text-gray-50 px-2 py-1 rounded-full">
-            v1.1.0
-          </span>
-        </h1>
-
-        {/* Desktop Menu */}
-        <ul className="hidden md:flex gap-6 text-gray-300">
-          <li>
-            <MotionLink
-              href="/docs"
-              className="hover:text-white hover:bg-[#555555] px-3 py-1 hover:rounded-xl text-xl"
-              layout
-            >
-              Docs
-            </MotionLink>
-          </li>
-          <li>
-            <MotionLink
-              href="https://github.com/Nebulaz7/gen-z.js"
-              className="hover:text-white hover:bg-[#555555] px-3 py-1 hover:rounded-xl text-xl"
-              layout
-            >
-              Github
-            </MotionLink>
-          </li>
-          <li>
-            <MotionLink
-              href="/examples"
-              className="hover:text-white hover:bg-[#555555] px-3 py-1 hover:rounded-xl text-xl"
-              layout
-            >
-              Examples
-            </MotionLink>
-          </li>
-        </ul>
-
-        {/* Desktop Buttons */}
-        <div className="hidden md:flex items-center gap-6">
-          <motion.button
-            className="bg-[#f2f2f2] text-lg text-black sm: px-5 cursor-pointer py-2 rounded-full flex items-center gap-2 shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] transition duration-300"
-            whileHover="hover"
-            variants={{
-              hover: { scale: 0.9 },
-            }}
-            layout
-            onClick={() =>
-              (window.location.href = "https://github.com/Nebulaz7/gen-z.js")
-            }
-          >
-            Star on github
-            <Link
-              href="https://github.com/Nebulaz7/gen-z.js"
-              className="bg-black text-white px-3 py-1 rounded-full text-sm"
-            >
-              {repoStars} ★
-            </Link>
-          </motion.button>
-        </div>
-
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-          className="md:hidden lg:hidden text-white p-2 cursor-pointer"
-        >
-          <motion.div
-            initial={false}
-            animate={{ rotate: isMenuOpen ? 180 : 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {isMenuOpen ? (
-              <X size={30} className="hidden" />
-            ) : (
-              <DoubleLineIcon />
-            )}
-          </motion.div>
-        </button>
-      </nav>
-
-      {/* Mobile Fullscreen Menu */}
-      <motion.div
-        initial={{ x: "-100%", y: "-100%" }}
-        animate={{
-          x: isMenuOpen ? 0 : "-100%",
-          y: isMenuOpen ? 0 : "-100%",
-        }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="absolute py-2 top-0 left-0 w-full md:hidden min-h-[50vh] bg-transparent z-30 flex flex-col"
+    <>
+      <Banner onClose={() => setIsBannerVisible(false)} />
+      <motion.header
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ once: true }}
+        className={`fixed left-0 right-0 transition-all duration-300 ${
+          isVisible ? "translate-y-0" : "-translate-y-full"
+        } ${
+          isBannerVisible ? "top-[52px]" : "top-0"
+        } flex py-3 px-3 bg-[#121212]/70 lg:bg-transparent m-0 lg:py-4 font-sm backdrop-blur-xl z-30`}
       >
-        {/* Menu Header */}
-        <div className="flex justify-between bg-transparent items-center p-3">
-          <h1 className="font-md text-white text-xl"></h1>
-          <button
-            onClick={() => setIsMenuOpen(false)}
-            className="text-white p-2 cursor-pointer"
+        <nav className="flex justify-between items-center gap-5 w-full max-w-7xl px-2 md:px-6 h-[3.5rem] mx-auto">
+          <h1
+            onClick={() => {
+              window.location.href = "/";
+            }}
+            className="font-md flex cursor-pointer text-white text-2xl"
           >
-            <X size={30} />
-          </button>
-        </div>
+            <Image
+              src="/logo.svg"
+              alt="GenZ Logo"
+              width={40}
+              height={30}
+              className="object-contain rounded-full"
+            />
+            GenZ.js{" "}
+            <span className="text-xs bg-secondary text-gray-50 px-2 py-1 rounded-full">
+              v1.1.0
+            </span>
+          </h1>
 
-        {/* Menu Content */}
-        <div className="flex-1 bg-white pt-4  pb-0 rounded-2xl m-4 shadow-[2px_4px_0px_0px_#fafa10]">
-          <ul className="flex flex-col gap-6 pl-6">
-            <li className="gap-0">
-              <Link
+          {/* Desktop Menu */}
+          <ul className="hidden md:flex gap-6 text-gray-300">
+            <li>
+              <MotionLink
                 href="/docs"
-                className="text-2xl text-black border-b-2 border-black hover:text-3xl  transition-colors"
+                className="hover:text-white hover:bg-[#555555] px-3 py-1 hover:rounded-xl text-xl"
+                layout
               >
                 Docs
-                <FileText className="inline-block ml-0.5" size={24} />
-              </Link>
+              </MotionLink>
             </li>
             <li>
-              <Link
+              <MotionLink
                 href="https://github.com/Nebulaz7/gen-z.js"
-                className="text-2xl text-black border-b-2 border-black hover:text-3xl transition-colors"
+                className="hover:text-white hover:bg-[#555555] px-3 py-1 hover:rounded-xl text-xl"
+                layout
               >
                 Github
-                <ArrowUpRight className="inline-block ml-0.5" size={24} />
-              </Link>
+              </MotionLink>
             </li>
             <li>
-              <Link
+              <MotionLink
                 href="/examples"
-                className="text-2xl text-black border-b-2 border-black hover:text-3xl  transition-colors"
+                className="hover:text-white hover:bg-[#555555] px-3 py-1 hover:rounded-xl text-xl"
+                layout
               >
                 Examples
-                <FileCode2 className="inline-block ml-0.5" size={24} />
-              </Link>
+              </MotionLink>
             </li>
-            <li></li>
           </ul>
-          {/* Star button for mobile */}
-          <div className="md:hidden mb-2 lg:hidden flex items-center gap-6">
+
+          {/* Desktop Buttons */}
+          <div className="hidden md:flex items-center gap-6">
             <motion.button
-              className="bg-black text-lg ml-3 text-[#f2f2f2] px-4 cursor-pointer py-2 rounded-full flex items-center gap-2 shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] transition duration-300"
+              className="bg-[#f2f2f2] text-lg text-black sm: px-5 cursor-pointer py-2 rounded-full flex items-center gap-2 shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] transition duration-300"
               whileHover="hover"
               variants={{
                 hover: { scale: 0.9 },
@@ -222,18 +134,115 @@ const Navbar = () => {
                 (window.location.href = "https://github.com/Nebulaz7/gen-z.js")
               }
             >
-              <GithubIcon size={20} /> Star on github
+              Star on github
               <Link
                 href="https://github.com/Nebulaz7/gen-z.js"
-                className="bg-white flex text-black px-2 py-1 rounded-full text-sm"
+                className="bg-black text-white px-3 py-1 rounded-full text-sm"
               >
-                {repoStars} <span className="ml-0.5">★</span>
+                {repoStars} ★
               </Link>
             </motion.button>
           </div>
-        </div>
-      </motion.div>
-    </motion.header>
+
+          {/* Mobile Menu Button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden lg:hidden text-white p-2 cursor-pointer"
+          >
+            <motion.div
+              initial={false}
+              animate={{ rotate: isMenuOpen ? 180 : 0 }}
+              transition={{ duration: 0.3 }}
+            >
+              {isMenuOpen ? (
+                <X size={30} className="hidden" />
+              ) : (
+                <DoubleLineIcon />
+              )}
+            </motion.div>
+          </button>
+        </nav>
+
+        {/* Mobile Fullscreen Menu */}
+        <motion.div
+          initial={{ x: "-100%", y: "-100%" }}
+          animate={{
+            x: isMenuOpen ? 0 : "-100%",
+            y: isMenuOpen ? 0 : "-100%",
+          }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          className="absolute py-2 top-0 left-0 w-full md:hidden min-h-[50vh] bg-transparent z-30 flex flex-col"
+        >
+          {/* Menu Header */}
+          <div className="flex justify-between bg-transparent items-center p-3">
+            <h1 className="font-md text-white text-xl"></h1>
+            <button
+              onClick={() => setIsMenuOpen(false)}
+              className="text-white p-2 cursor-pointer"
+            >
+              <X size={30} />
+            </button>
+          </div>
+
+          {/* Menu Content */}
+          <div className="flex-1 bg-white pt-4  pb-0 rounded-2xl m-4 shadow-[2px_4px_0px_0px_#fafa10]">
+            <ul className="flex flex-col gap-6 pl-6">
+              <li className="gap-0">
+                <Link
+                  href="/docs"
+                  className="text-2xl text-black border-b-2 border-black hover:text-3xl  transition-colors"
+                >
+                  Docs
+                  <FileText className="inline-block ml-0.5" size={24} />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://github.com/Nebulaz7/gen-z.js"
+                  className="text-2xl text-black border-b-2 border-black hover:text-3xl transition-colors"
+                >
+                  Github
+                  <ArrowUpRight className="inline-block ml-0.5" size={24} />
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/examples"
+                  className="text-2xl text-black border-b-2 border-black hover:text-3xl  transition-colors"
+                >
+                  Examples
+                  <FileCode2 className="inline-block ml-0.5" size={24} />
+                </Link>
+              </li>
+              <li></li>
+            </ul>
+            {/* Star button for mobile */}
+            <div className="md:hidden mb-2 lg:hidden flex items-center gap-6">
+              <motion.button
+                className="bg-black text-lg ml-3 text-[#f2f2f2] px-4 cursor-pointer py-2 rounded-full flex items-center gap-2 shadow-[2px_2px_0px_0px_#fafa10] hover:shadow-[1px_1px_0px_0px_#fafa10] transition duration-300"
+                whileHover="hover"
+                variants={{
+                  hover: { scale: 0.9 },
+                }}
+                layout
+                onClick={() =>
+                  (window.location.href =
+                    "https://github.com/Nebulaz7/gen-z.js")
+                }
+              >
+                <GithubIcon size={20} /> Star on github
+                <Link
+                  href="https://github.com/Nebulaz7/gen-z.js"
+                  className="bg-white flex text-black px-2 py-1 rounded-full text-sm"
+                >
+                  {repoStars} <span className="ml-0.5">★</span>
+                </Link>
+              </motion.button>
+            </div>
+          </div>
+        </motion.div>
+      </motion.header>
+    </>
   );
 };
 

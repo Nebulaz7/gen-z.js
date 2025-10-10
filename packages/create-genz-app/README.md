@@ -91,16 +91,12 @@ The starter template includes a **counter example** using GenZ.js:
 
 ## 📚 Learn More
 
-<div align="center">
-
 | Resource             | Link                                                   |
 | -------------------- | ------------------------------------------------------ |
 | 📖 **Documentation** | [GenZ.js Docs](https://genz-js.vercel.app/docs)        |
 | 💡 **Examples**      | [View Examples](https://genz-js.vercel.app/examples)   |
 | ⭐ **GitHub**        | [Star on GitHub](https://github.com/Nebulaz7/gen-z.js) |
 | 🌐 **Website**       | [Official Website](https://genz-js.vercel.app)         |
-
-</div>
 
 ---
 

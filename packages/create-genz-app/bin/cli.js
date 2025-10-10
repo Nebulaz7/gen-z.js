@@ -8,7 +8,14 @@ const { execSync } = require("child_process");
 const banner = `
 ╔═══════════════════════════════╗
 ║                               ║
-║         GenZ.js               ║
+║#####                #######   ║               
+#     # ###### #    #      #    ║       #  ####  
+#       #      ##   #     #     ║       # #      
+#  #### #####  # #  #    #      ║       #  ####  
+#     # #      #  # #   #     ###       #      # 
+#     # #      #   ##  #      ###  #    # #    # 
+ #####  ###### #    # ####### ###   ####   ####  
+║                               ║  
 ║                               ║
 ╚═══════════════════════════════╝
 `;
@@ -22,11 +29,11 @@ const templatePath = path.join(__dirname, "..", "src");
 
 // Check if directory already exists
 if (fs.existsSync(projectPath)) {
-  console.error(`❌ Directory ${projectName} already exists!`);
+  console.error(`Directory ${projectName} already exists!`);
   process.exit(1);
 }
 
-console.log(`\n📁 Creating project: ${projectName}...`);
+console.log(`\n Creating project: ${projectName}...`);
 
 // Create project directory
 fs.mkdirSync(projectPath, { recursive: true });
@@ -46,22 +53,22 @@ let pkgContent = fs.readFileSync(pkgPath, "utf8");
 pkgContent = pkgContent.replace("PROJECT_NAME_PLACEHOLDER", projectName);
 fs.writeFileSync(pkgPath, pkgContent);
 
-console.log("✅ Project created successfully!");
+console.log("Project created successfully!");
 
 // Install dependencies
-console.log("\n📦 Installing dependencies...\n");
+console.log("\n Installing dependencies...\n");
 
 try {
   execSync("npm install", {
     cwd: projectPath,
     stdio: "inherit",
   });
-  console.log("\n✨ All done!");
+  console.log("\n  All done!");
   console.log(`\nTo get started:`);
   console.log(`  cd ${projectName}`);
   console.log(`  npm run dev`);
 } catch (error) {
-  console.log("\n⚠️  Please run npm install manually");
+  console.log("\n  Please run npm install manually");
   console.log(`\nTo get started:`);
   console.log(`  cd ${projectName}`);
   console.log(`  npm install`);
