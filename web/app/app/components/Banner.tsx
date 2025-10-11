@@ -39,11 +39,11 @@ const Banner = ({ onClose }: BannerProps) => {
               </code>
             </p>
             <Link
-              href="/docs/cli"
+              href="/docs/installation"
               className="inline-flex items-center gap-1 font-semibold hover:underline underline-offset-4 transition-all hover:gap-2 text-xs sm:text-sm whitespace-nowrap"
             >
               View docs
-              <ArrowRight className="w-3 h-3 sm:w-4 sm:h-4" />
+              <ArrowRight className="inline-block mt-1 w-3 h-3 sm:w-4 sm:h-4" />
             </Link>
           </div>
 
