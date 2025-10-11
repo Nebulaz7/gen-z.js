@@ -1,8 +1,8 @@
 <div align="center">
 
-# 🚀 create-genz-app
+# create-genz-app
 
-⚡ Quickly scaffold a new [GenZ.js](https://genz-js.vercel.app) project with a single command.
+Quickly scaffold a new [GenZ.js](https://genz-js.vercel.app) project with a single command.
 
 [![npm version](https://img.shields.io/npm/v/create-genz-app.svg)](https://www.npmjs.com/package/create-genz-app)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
@@ -11,13 +11,13 @@
 
 ---
 
-## 📖 What is GenZ.js?
+## What is GenZ.js?
 
 **GenZ.js** is a mini framework for HTML-first interactivity. Add functionality through simple HTML attributes ending with **'z'** - no complex JavaScript required!
 
 ---
 
-## ⚡ Quick Start
+## Quick Start
 
 Create a new GenZ.js app with one command:
 
@@ -31,7 +31,7 @@ npm run dev
 
 ---
 
-## 📦 What's Included?
+## What's Included?
 
 Your new project comes with:
 
@@ -44,7 +44,7 @@ Your new project comes with:
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 my-app/
@@ -59,7 +59,7 @@ my-app/
 
 ---
 
-## 🛠️ Available Scripts
+## Available Scripts
 
 | Command           | Description              |
 | ----------------- | ------------------------ |
@@ -69,7 +69,7 @@ my-app/
 
 ---
 
-## 💡 Example Usage
+## Example Usage
 
 The starter template includes a **counter example** using GenZ.js:
 
@@ -89,7 +89,7 @@ The starter template includes a **counter example** using GenZ.js:
 
 ---
 
-## 📚 Learn More
+## Learn More
 
 | Resource             | Link                                                   |
 | -------------------- | ------------------------------------------------------ |

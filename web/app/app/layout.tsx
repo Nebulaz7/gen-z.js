@@ -24,6 +24,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <meta name="algolia-site-verification" content="5562ADE9D51BEC12" />
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
